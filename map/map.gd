@@ -13,7 +13,7 @@ var resource_hit_points: Dictionary = {} # [resource_id: int, hit_points: int]
 var _tile_damage: Dictionary = {} # [Vector2i, int] # TODO clean to avoid memory leak
 
 func _ready() -> void:
-	Events.drill_hit.connect(_on_drill_hit)
+	Globals.drill_hit.connect(_on_drill_hit)
 	for r in all_resources:
 		_resource_by_id[r.id] = r
 		print(r.id)
@@ -26,7 +26,7 @@ func _on_drill_hit(tile: RID, drill_damage: int):
 		var r = _resource_at(coords)
 		if r:
 			resources_tml.erase_cell(coords)
-			Events.resource_drilled.emit(r)
+			Globals.resource_drilled.emit(r)
 
 func _get_hit_points(coords: Vector2i) -> int:
 	var r = _resource_at(coords)

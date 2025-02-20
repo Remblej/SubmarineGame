@@ -5,8 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var resource_storage: ResourceStorage = $ResourceStorage
 
 func _ready() -> void:
-	Events.drill_hit.connect(_on_drill_hit)
-	Events.resource_drilled.connect(_on_resource_drilled)
+	Globals.drill_hit.connect(_on_drill_hit)
+	Globals.resource_drilled.connect(_on_resource_drilled)
 
 func _physics_process(delta: float) -> void:
 	rotation = movement.calculate_rotation(rotation,delta)

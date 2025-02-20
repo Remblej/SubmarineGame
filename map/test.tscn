@@ -1,18 +1,18 @@
 [gd_scene load_steps=15 format=4 uid="uid://cwyt7c1vixqkw"]
 
-[ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://tileset_terrain.png" id="2_cca80"]
-[ext_resource type="Script" path="res://resources/resource.gd" id="2_qq4ni"]
-[ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://Player.tscn" id="2_s377a"]
-[ext_resource type="Script" path="res://map.gd" id="2_yqn4j"]
-[ext_resource type="Resource" uid="uid://cd741u70xkas5" path="res://resources/gold.tres" id="3_5na0d"]
-[ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://tileset_bg.png" id="3_c6pjw"]
-[ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://tileset_resources.png" id="3_pax5w"]
-[ext_resource type="Resource" uid="uid://cy6i0wjeiencn" path="res://resources/diamont.tres" id="4_yoq5b"]
-[ext_resource type="Resource" uid="uid://devk6vr711mgi" path="res://resources/copper.tres" id="5_25bhn"]
-[ext_resource type="Resource" uid="uid://cdfgfujvqyq1f" path="res://resources/iron.tres" id="6_bb0pw"]
+[ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
+[ext_resource type="Script" path="res://resources/resource.gd" id="2_nccpi"]
+[ext_resource type="Resource" uid="uid://cd741u70xkas5" path="res://resources/gold.tres" id="3_cns7h"]
+[ext_resource type="Resource" uid="uid://cy6i0wjeiencn" path="res://resources/diamont.tres" id="4_3u8rv"]
+[ext_resource type="Resource" uid="uid://devk6vr711mgi" path="res://resources/copper.tres" id="5_8npig"]
+[ext_resource type="Resource" uid="uid://cdfgfujvqyq1f" path="res://resources/iron.tres" id="6_wovwn"]
+[ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/tileset_terrain.png" id="7_mjhws"]
+[ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/tileset_bg.png" id="8_rqics"]
+[ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/tileset_resources.png" id="9_tglud"]
+[ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/Player.tscn" id="10_b1pgp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hyym2"]
-texture = ExtResource("2_cca80")
+texture = ExtResource("7_mjhws")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -394,7 +394,7 @@ texture_region_size = Vector2i(64, 64)
 11:3/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wga72"]
-texture = ExtResource("3_c6pjw")
+texture = ExtResource("8_rqics")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -407,7 +407,7 @@ texture_region_size = Vector2i(64, 64)
 2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfcjr"]
-texture = ExtResource("3_pax5w")
+texture = ExtResource("9_tglud")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/custom_data_0 = 1
@@ -433,8 +433,8 @@ sources/2 = SubResource("TileSetAtlasSource_tfcjr")
 [node name="Node2D" type="Node2D"]
 
 [node name="Map" type="Node2D" parent="."]
-script = ExtResource("2_yqn4j")
-all_resources = Array[ExtResource("2_qq4ni")]([ExtResource("3_5na0d"), ExtResource("4_yoq5b"), ExtResource("5_25bhn"), ExtResource("6_bb0pw")])
+script = ExtResource("1_f2k5u")
+all_resources = Array[ExtResource("2_nccpi")]([ExtResource("3_cns7h"), ExtResource("4_3u8rv"), ExtResource("5_8npig"), ExtResource("6_wovwn")])
 
 [node name="BackgroundTML" type="TileMapLayer" parent="Map"]
 modulate = Color(0.0812, 0.16124, 0.29, 1)
@@ -457,5 +457,5 @@ scale = Vector2(0.997002, 1)
 tile_map_data = PackedByteArray("AAD6/w8AAgAAAAAAAAD5/w4AAgAAAAAAAAD6/wwAAgAAAAAAAAD7/wsAAgAAAAAAAAD8/wsAAgAAAAAAAAD7/wwAAgAAAAAAAAD8/wwAAgAAAAAAAAD9/w8AAgAAAAMAAAD9/xAAAgAAAAMAAAD9/w4AAgAAAAMAAAD6/xEAAgAAAAEAAAD7/xEAAgAAAAEAAAD6/xIAAgAAAAEAAAD7/xIAAgAAAAEAAAD9/xIAAgAAAAIAAAD9/xMAAgAAAAIAAAD+/xIAAgAAAAIAAAD+/xMAAgAAAAIAAAD//xIAAgAAAAIAAAD//xMAAgAAAAIAAAA=")
 tile_set = SubResource("TileSet_v1x37")
 
-[node name="Player" parent="." instance=ExtResource("2_s377a")]
+[node name="Player" parent="." instance=ExtResource("10_b1pgp")]
 position = Vector2(-608, 0)

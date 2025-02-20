@@ -27,4 +27,4 @@ func _on_collision(body_rid, body, body_shape_index, local_shape_index):
 	_can_hit = false
 	set_deferred("monitoring", false)
 	timer.start()
-	Events.drill_hit.emit(body_rid, damage)
+	Globals.drill_hit.emit(body_rid, damage)
