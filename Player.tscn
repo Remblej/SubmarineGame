@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckgaf5gu5p2qj"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_46rre"]
+[ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
+[ext_resource type="Script" path="res://movement.gd" id="3_r68kt"]
+[ext_resource type="Script" path="res://drill.gd" id="4_ydsbw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
+radius = 12.0
+height = 84.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ra0fu"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_46rre")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.65625, 0.1875)
+texture = ExtResource("2_5xngl")
+
+[node name="Movement" type="Node2D" parent="."]
+script = ExtResource("3_r68kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yno6g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="Drill" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_ydsbw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drill"]
+position = Vector2(41, 0)
+shape = SubResource("CircleShape2D_ra0fu")
+
+[node name="Timer" type="Timer" parent="Drill"]
