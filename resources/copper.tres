@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GatherableResource" load_steps=2 format=3 uid="uid://devk6vr711mgi"]
+
+[ext_resource type="Script" path="res://resources/resource.gd" id="1_auirw"]
+
+[resource]
+script = ExtResource("1_auirw")
+id = 3
+name = "Copper"
+hit_points = 8

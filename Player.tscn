@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=8 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
 [ext_resource type="Script" path="res://movement.gd" id="3_r68kt"]
 [ext_resource type="Script" path="res://drill.gd" id="4_ydsbw"]
+[ext_resource type="PackedScene" uid="uid://u42t8gbfh6wa" path="res://resource_storage.tscn" id="5_ebs6i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
 radius = 12.0
@@ -39,3 +40,5 @@ position = Vector2(41, 0)
 shape = SubResource("CircleShape2D_ra0fu")
 
 [node name="Timer" type="Timer" parent="Drill"]
+
+[node name="ResourceStorage" parent="." instance=ExtResource("5_ebs6i")]

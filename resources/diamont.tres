@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GatherableResource" load_steps=2 format=3 uid="uid://cy6i0wjeiencn"]
+
+[ext_resource type="Script" path="res://resources/resource.gd" id="1_ais1g"]
+
+[resource]
+script = ExtResource("1_ais1g")
+id = 4
+name = "Diamont"
+hit_points = 10
