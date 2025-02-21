@@ -1,9 +1,15 @@
-[gd_resource type="Resource" script_class="GatherableResource" load_steps=2 format=3 uid="uid://cd741u70xkas5"]
+[gd_resource type="Resource" script_class="GatherableResource" load_steps=4 format=3 uid="uid://cd741u70xkas5"]
 
+[ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/tileset_resources.png" id="1_k0ab7"]
 [ext_resource type="Script" path="res://resources/resource.gd" id="1_v4b7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aekws"]
+atlas = ExtResource("1_k0ab7")
+region = Rect2(0, 0, 64, 64)
 
 [resource]
 script = ExtResource("1_v4b7i")
 id = 1
 name = "Gold"
 hit_points = 5
+icon = SubResource("AtlasTexture_aekws")

@@ -2,13 +2,11 @@ class_name Player extends CharacterBody2D
 
 @onready var movement: Movement = $Movement
 @onready var drill: Drill = $Drill
-@onready var resource_storage: ResourceStorage = $ResourceStorage
 
 var _depth: int
 
 func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
-	Globals.resource_drilled.connect(_on_resource_drilled)
 
 func _process(delta: float) -> void:
 	var new_depth = round((global_position.y - 32) / 64)
@@ -25,8 +23,3 @@ func _physics_process(delta: float) -> void:
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	movement.apply_recoil()
-
-func _on_resource_drilled(resource: GatherableResource):
-	resource_storage.add(resource.id)
-	Globals.resource_added_to_cargo.emit(resource) # todo move to cargo
-	print(resource.name + " +1 -> " + str(resource_storage.amount(resource.id)))

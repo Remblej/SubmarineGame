@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2gwxiu7kkwvs"]
+[gd_scene load_steps=5 format=3 uid="uid://c2gwxiu7kkwvs"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme.tres" id="1_50qix"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_ejcmk"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="2_e53lh"]
+[ext_resource type="PackedScene" uid="uid://bp6cvvvb824pg" path="res://ui/icon.tscn" id="2_v7o17"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ejcmk")
+icon_scene = ExtResource("2_v7o17")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -35,6 +37,7 @@ custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 8
+alignment = 2
 
 [node name="EnergyPanel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 72)
@@ -115,6 +118,7 @@ value = 1.0
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 6
+alignment = 2
 
 [node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 72)
@@ -155,9 +159,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+alignment = 2
 
 [node name="Panel3" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(0, 152)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("1_50qix")
@@ -179,7 +184,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3/Panel3/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 0
 text = "Cargo"
 label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
+
+[node name="CargoHFlowContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3/Panel3/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
