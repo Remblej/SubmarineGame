@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2gwxiu7kkwvs"]
+[gd_scene load_steps=4 format=3 uid="uid://c2gwxiu7kkwvs"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme.tres" id="1_50qix"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_ejcmk"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="2_e53lh"]
 
 [node name="Hud" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ejcmk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -66,10 +68,11 @@ layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer/VBoxContainer2/MarginContainer"]
+[node name="EnergyPB" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer/VBoxContainer2/MarginContainer"]
 modulate = Color(0.966667, 1, 0, 1)
 layout_mode = 2
-value = 65.0
+max_value = 1.0
+value = 1.0
 
 [node name="HullPanel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 72)
@@ -102,10 +105,11 @@ layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3/MarginContainer"]
+[node name="HullPB" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3/MarginContainer"]
 modulate = Color(0, 1, 0.95, 1)
 layout_mode = 2
-value = 100.0
+max_value = 1.0
+value = 1.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
@@ -140,10 +144,10 @@ text = "Depth"
 label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer/VBoxContainer"]
+[node name="DepthLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
-text = "100 m"
+text = "0 m"
 label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
 

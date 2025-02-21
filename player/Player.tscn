@@ -47,3 +47,7 @@ shape = SubResource("CircleShape2D_ra0fu")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_0tymi")]
+
+[node name="Battery" type="Node" parent="."]
+
+[node name="Cargo" type="Node" parent="."]

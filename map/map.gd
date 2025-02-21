@@ -16,7 +16,6 @@ func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
 	for r in all_resources:
 		_resource_by_id[r.id] = r
-		print(r.id)
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	var coords = terrain_tml.get_coords_for_body_rid(tile)
