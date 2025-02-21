@@ -7,7 +7,7 @@ class_name Hud extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.depth_changed.connect(_update_depth)
-	Globals.energy_changed.connect(_update_energy)
+	Globals.battery_energy_changed.connect(_update_energy)
 	Globals.hull_integrity_changed.connect(_update_hull)
 	Globals.resource_added_to_cargo.connect(_resource_added_to_cargo)
 	Globals.resource_removed_from_cargo.connect(_resource_removed_from_cargo)

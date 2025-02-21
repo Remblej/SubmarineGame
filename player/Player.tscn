@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=10 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c2gwxiu7kkwvs" path="res://ui/hud.tscn" id="4_0tymi"]
 [ext_resource type="Script" path="res://player/drill.gd" id="4_ydsbw"]
 [ext_resource type="PackedScene" uid="uid://u42t8gbfh6wa" path="res://util/resource_storage.tscn" id="5_ebs6i"]
+[ext_resource type="Script" path="res://player/battery.gd" id="7_w8jxh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
 radius = 12.0
@@ -49,5 +50,6 @@ shape = SubResource("CircleShape2D_ra0fu")
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_0tymi")]
 
 [node name="Battery" type="Node" parent="."]
+script = ExtResource("7_w8jxh")
 
 [node name="Cargo" type="Node" parent="."]
