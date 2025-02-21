@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2gwxiu7kkwvs"]
+[gd_scene load_steps=3 format=3 uid="uid://c2gwxiu7kkwvs"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme.tres" id="1_50qix"]
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="2_e53lh"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -57,6 +58,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Energy
 "
+label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer/VBoxContainer2"]
@@ -92,6 +94,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3"]
 layout_mode = 2
 text = "Hull Integrity"
+label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3"]
@@ -132,12 +135,16 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 text = "Depth"
+label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
 text = "100 m"
+label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
@@ -170,4 +177,5 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 2
 text = "Cargo"
+label_settings = ExtResource("2_e53lh")
 horizontal_alignment = 1
