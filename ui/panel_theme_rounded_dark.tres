@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cdbir6qeifrph"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cdbir6qeifrph"]
 
 [ext_resource type="FontFile" uid="uid://b1oo0ebnwqli0" path="res://assets/Graduate-Regular.ttf" id="1_5qnsm"]
-[ext_resource type="StyleBox" uid="uid://4ve8ypphogrv" path="res://ui/panel_stylebox_dark.tres" id="1_x3aec"]
+[ext_resource type="Texture2D" uid="uid://dm0lxqbojranj" path="res://assets/ui_panel_dark.png" id="2_fxxsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbr5o"]
 content_margin_left = 4.0
@@ -60,6 +60,13 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8bumc"]
+texture = ExtResource("2_fxxsr")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -83,6 +90,6 @@ Button/fonts/font = ExtResource("1_5qnsm")
 Button/styles/disabled = SubResource("StyleBoxFlat_vbr5o")
 Button/styles/focus = SubResource("StyleBoxFlat_4jbxn")
 Button/styles/hover = SubResource("StyleBoxFlat_pe68n")
-Button/styles/normal = ExtResource("1_x3aec")
+Button/styles/normal = null
 Button/styles/pressed = SubResource("StyleBoxFlat_tmenr")
-Panel/styles/panel = ExtResource("1_x3aec")
+Panel/styles/panel = SubResource("StyleBoxTexture_8bumc")
