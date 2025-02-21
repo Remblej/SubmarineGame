@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy811hj1i6eel"]
+
+[ext_resource type="Script" path="res://ui/max_depth_panel.gd" id="1_5lnwu"]
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="2_xprcu"]
+
+[node name="MaxDepthPanel" type="VBoxContainer"]
+script = ExtResource("1_5lnwu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Max Depth"
+label_settings = ExtResource("2_xprcu")
+horizontal_alignment = 1
+
+[node name="DepthLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 6
+text = "0 m"
+label_settings = ExtResource("2_xprcu")
+horizontal_alignment = 1

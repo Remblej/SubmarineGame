@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=12 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b06wmn8duihqk" path="res://ui/floating_text.tscn" id="7_a4myd"]
 [ext_resource type="Script" path="res://player/battery.gd" id="7_w8jxh"]
 [ext_resource type="Script" path="res://player/cargo.gd" id="7_ywc2t"]
+[ext_resource type="Script" path="res://player/hull.gd" id="8_ni4xl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
 radius = 12.0
@@ -50,6 +51,9 @@ script = ExtResource("7_w8jxh")
 [node name="Cargo" type="Node" parent="."]
 script = ExtResource("7_ywc2t")
 floating_text_scene = ExtResource("7_a4myd")
+
+[node name="Hull" type="Node" parent="."]
+script = ExtResource("8_ni4xl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

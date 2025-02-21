@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bypvt7rdc4ugd"
-path="res://.godot/imported/ui_panel.svg-4c53de84bd912f868577e33278615926.ctex"
+uid="uid://djps6adxat7cy"
+path="res://.godot/imported/ui_panel_flat_bottom_white.svg-0037a4fe3b8ffb06998332bfc15d1ba0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui_panel.svg"
-dest_files=["res://.godot/imported/ui_panel.svg-4c53de84bd912f868577e33278615926.ctex"]
+source_file="res://assets/ui_panel_flat_bottom_white.svg"
+dest_files=["res://.godot/imported/ui_panel_flat_bottom_white.svg-0037a4fe3b8ffb06998332bfc15d1ba0.ctex"]
 
 [params]
 

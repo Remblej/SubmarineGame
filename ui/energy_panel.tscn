@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4jfjrpgrs0r0"]
+
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="1_4rfyw"]
+[ext_resource type="Script" path="res://ui/energy_panel.gd" id="1_6v1ja"]
+
+[node name="EnergyPanel" type="VBoxContainer"]
+script = ExtResource("1_6v1ja")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Energy
+"
+label_settings = ExtResource("1_4rfyw")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="EnergyPB" type="ProgressBar" parent="MarginContainer"]
+modulate = Color(0.966667, 1, 0, 1)
+layout_mode = 2
+max_value = 1.0
+value = 1.0

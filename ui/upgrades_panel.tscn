@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs7ow1e3s5aym"]
+
+[ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_jnmrq"]
+[ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="2_w3map"]
+[ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="3_bi275"]
+[ext_resource type="PackedScene" uid="uid://dy811hj1i6eel" path="res://ui/max_depth_panel.tscn" id="4_x4rdq"]
+[ext_resource type="PackedScene" uid="uid://btgdkepky5bue" path="res://ui/storage_panel.tscn" id="5_42h5g"]
+[ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="6_iu0q7"]
+[ext_resource type="Theme" uid="uid://dkx5687maa13f" path="res://ui/panel_theme_rounded_top_light.tres" id="6_srbli"]
+
+[node name="UpgradesPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jnmrq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="ShipStatusHBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="EnergyPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("2_w3map")]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="HullPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("3_bi275")]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="MaxDepthPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("4_x4rdq")]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="StoragePanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("5_42h5g")]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="ResearchButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0.866667, 0.866667, 0.866667, 1)
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_srbli")
+text = "Research"
+
+[node name="UpgradesButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0.666667, 0.666667, 0.666667, 1)
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_srbli")
+text = "Upgrades"
+
+[node name="EmbarkButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0.317771, 0.840053, 0.759831, 1)
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("6_iu0q7")
+text = "Embark"
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
+modulate = Color(0.866667, 0.866667, 0.866667, 1)
+custom_minimum_size = Vector2(0, 470)
+layout_mode = 2
+theme = ExtResource("6_iu0q7")

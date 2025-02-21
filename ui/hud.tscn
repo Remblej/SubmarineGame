@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2gwxiu7kkwvs"]
+[gd_scene load_steps=7 format=3 uid="uid://c2gwxiu7kkwvs"]
 
-[ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme.tres" id="1_50qix"]
+[ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_50qix"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_ejcmk"]
-[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="2_e53lh"]
-[ext_resource type="PackedScene" uid="uid://bp6cvvvb824pg" path="res://ui/icon.tscn" id="2_v7o17"]
+[ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="4_esiww"]
+[ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="5_c6ghm"]
+[ext_resource type="PackedScene" uid="uid://bxldv71jn67ij" path="res://ui/depth_panel.tscn" id="6_bxbel"]
+[ext_resource type="PackedScene" uid="uid://boamtoojltmb0" path="res://ui/cargo_panel.tscn" id="7_77cey"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -13,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ejcmk")
-icon_scene = ExtResource("2_v7o17")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -56,26 +57,8 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer"]
+[node name="EnergyPanel" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer" instance=ExtResource("4_esiww")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Energy
-"
-label_settings = ExtResource("2_e53lh")
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-
-[node name="EnergyPB" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/EnergyPanel/MarginContainer/VBoxContainer2/MarginContainer"]
-modulate = Color(0.966667, 1, 0, 1)
-layout_mode = 2
-max_value = 1.0
-value = 1.0
 
 [node name="HullPanel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 72)
@@ -94,25 +77,8 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer"]
+[node name="HullPanel" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer" instance=ExtResource("5_c6ghm")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3"]
-layout_mode = 2
-text = "Hull Integrity"
-label_settings = ExtResource("2_e53lh")
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-
-[node name="HullPB" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HullPanel/MarginContainer/VBoxContainer3/MarginContainer"]
-modulate = Color(0, 1, 0.95, 1)
-layout_mode = 2
-max_value = 1.0
-value = 1.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
@@ -138,22 +104,8 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer"]
+[node name="DepthPanel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer" instance=ExtResource("6_bxbel")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "Depth"
-label_settings = ExtResource("2_e53lh")
-horizontal_alignment = 1
-
-[node name="DepthLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Panel3/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "0 m"
-label_settings = ExtResource("2_e53lh")
-horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
@@ -179,17 +131,5 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3/Panel3/MarginContainer2"]
+[node name="CargoPanel" parent="MarginContainer/HBoxContainer/VBoxContainer3/Panel3/MarginContainer2" instance=ExtResource("7_77cey")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer3/Panel3/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Cargo"
-label_settings = ExtResource("2_e53lh")
-horizontal_alignment = 1
-
-[node name="CargoHFlowContainer" type="HFlowContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3/Panel3/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
