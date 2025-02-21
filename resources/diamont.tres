@@ -12,4 +12,5 @@ script = ExtResource("1_ais1g")
 id = 4
 name = "Diamont"
 hit_points = 10
+color = Color(0.1209, 0.93, 0.781665, 1)
 icon = SubResource("AtlasTexture_icr1h")
