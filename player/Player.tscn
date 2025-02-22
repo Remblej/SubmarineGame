@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=15 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
@@ -9,12 +9,24 @@
 [ext_resource type="Script" path="res://player/battery.gd" id="7_w8jxh"]
 [ext_resource type="Script" path="res://player/cargo.gd" id="7_ywc2t"]
 [ext_resource type="Script" path="res://player/hull.gd" id="8_ni4xl"]
+[ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/tex_cone.png" id="11_an1ft"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
 radius = 12.0
 height = 84.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ra0fu"]
+
+[sub_resource type="Gradient" id="Gradient_by1ny"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xmpr7"]
+gradient = SubResource("Gradient_by1ny")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.487179)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_46rre")
@@ -58,3 +70,20 @@ script = ExtResource("8_ni4xl")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_0tymi")]
+
+[node name="AmbientLight" type="PointLight2D" parent="."]
+energy = 0.6
+texture = SubResource("GradientTexture2D_xmpr7")
+
+[node name="FlashLight" type="PointLight2D" parent="."]
+position = Vector2(32, 0)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("11_an1ft")
+offset = Vector2(400, 0)
+
+[node name="FlashLight2" type="PointLight2D" parent="."]
+position = Vector2(32, 0)
+energy = 0.2
+texture = ExtResource("11_an1ft")
+offset = Vector2(400, 0)
