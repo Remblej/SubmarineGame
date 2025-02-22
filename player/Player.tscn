@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=16 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://player/battery.gd" id="7_w8jxh"]
 [ext_resource type="Script" path="res://player/cargo.gd" id="7_ywc2t"]
 [ext_resource type="Script" path="res://player/hull.gd" id="8_ni4xl"]
+[ext_resource type="PackedScene" uid="uid://cs7ow1e3s5aym" path="res://ui/upgrades_ui/upgrades_panel.tscn" id="10_7ktq7"]
 [ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/tex_cone.png" id="11_an1ft"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
@@ -71,6 +72,9 @@ script = ExtResource("8_ni4xl")
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_0tymi")]
 
+[node name="UpgradesPanel" parent="CanvasLayer" instance=ExtResource("10_7ktq7")]
+visible = false
+
 [node name="AmbientLight" type="PointLight2D" parent="."]
 energy = 0.6
 texture = SubResource("GradientTexture2D_xmpr7")
@@ -78,7 +82,6 @@ texture = SubResource("GradientTexture2D_xmpr7")
 [node name="FlashLight" type="PointLight2D" parent="."]
 position = Vector2(32, 0)
 energy = 0.5
-shadow_enabled = true
 texture = ExtResource("11_an1ft")
 offset = Vector2(400, 0)
 

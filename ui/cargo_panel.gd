@@ -12,5 +12,5 @@ func _cargo_changed(resources: Array[GatherableResource]):
 		cargo_h_flow_container.remove_child(c)
 	for r in resources:
 		var icon = icon_scene.instantiate() as Icon
-		icon.update_icon(r.icon)
+		icon.texture = r.icon
 		cargo_h_flow_container.add_child(icon)

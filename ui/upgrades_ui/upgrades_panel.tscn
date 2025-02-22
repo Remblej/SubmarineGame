@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs7ow1e3s5aym"]
+[gd_scene load_steps=11 format=3 uid="uid://cs7ow1e3s5aym"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_jnmrq"]
-[ext_resource type="Script" path="res://ui/upgrades_panel.gd" id="1_xj3g6"]
+[ext_resource type="Script" path="res://ui/upgrades_ui/upgrades_panel.gd" id="1_xj3g6"]
 [ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="2_w3map"]
 [ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="3_bi275"]
 [ext_resource type="PackedScene" uid="uid://dy811hj1i6eel" path="res://ui/max_depth_panel.tscn" id="4_x4rdq"]
 [ext_resource type="PackedScene" uid="uid://btgdkepky5bue" path="res://ui/storage_panel.tscn" id="5_42h5g"]
 [ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="6_iu0q7"]
 [ext_resource type="Theme" uid="uid://dkx5687maa13f" path="res://ui/panel_theme_rounded_top_light.tres" id="6_srbli"]
+[ext_resource type="PackedScene" uid="uid://d3l852vwott67" path="res://ui/upgrades_ui/research_panel.tscn" id="9_7448f"]
+[ext_resource type="PackedScene" uid="uid://ded5uildb1nb5" path="res://ui/upgrades_ui/resource_research_button.tscn" id="10_hvcnw"]
 
 [node name="UpgradesPanel" type="Control"]
 layout_mode = 3
@@ -86,7 +88,6 @@ size_flags_horizontal = 2
 size_flags_vertical = 4
 
 [node name="ResearchButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-modulate = Color(0.866667, 0.866667, 0.866667, 1)
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -95,7 +96,7 @@ theme = ExtResource("6_srbli")
 text = "Research"
 
 [node name="UpgradesButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-modulate = Color(0.666667, 0.666667, 0.666667, 1)
+self_modulate = Color(0.533037, 0.533037, 0.533037, 1)
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -113,7 +114,10 @@ theme = ExtResource("6_iu0q7")
 text = "Embark"
 
 [node name="MainPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
-modulate = Color(0.866667, 0.866667, 0.866667, 1)
-custom_minimum_size = Vector2(0, 470)
+custom_minimum_size = Vector2(0, 460)
 layout_mode = 2
 theme = ExtResource("6_iu0q7")
+
+[node name="ResearchPanel" parent="Panel/MarginContainer/VBoxContainer/MainPanel" instance=ExtResource("9_7448f")]
+layout_mode = 1
+resource_button_scene = ExtResource("10_hvcnw")

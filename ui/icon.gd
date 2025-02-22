@@ -2,12 +2,14 @@ class_name Icon extends Control
 
 @onready var texture_rect: TextureRect = $Panel/TextureRect
 
-var texture: Texture2D
-
-func update_icon(texture: Texture2D):
-	self.texture = texture
-	if texture_rect:
-		texture_rect.texture = texture
+var texture: Texture2D:
+	set(value):
+		texture = value
+		update_ui()
 
 func _ready() -> void:
-	texture_rect.texture = texture
+	update_ui()
+
+func update_ui():
+	if texture_rect and texture:
+		texture_rect.texture = texture
