@@ -11,10 +11,14 @@ signal battery_depleted
 signal battery_fully_charged
 signal velocity_changed(velocity: Vector2)
 
+@export var all_resources: GatherableResources
+var resource_by_id: Dictionary # [resource_id: int, GatherableResource]
 var max_depth: int = 0
 
 func _ready() -> void:
 	depth_changed.connect(_on_depth_change)
+	for r in all_resources.resources:
+		resource_by_id[r.id] = r
 
 func _on_depth_change(depth: int):
 	if depth > max_depth:

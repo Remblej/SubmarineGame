@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs7ow1e3s5aym"]
+[gd_scene load_steps=9 format=3 uid="uid://cs7ow1e3s5aym"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_jnmrq"]
+[ext_resource type="Script" path="res://ui/upgrades_panel.gd" id="1_xj3g6"]
 [ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="2_w3map"]
 [ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="3_bi275"]
 [ext_resource type="PackedScene" uid="uid://dy811hj1i6eel" path="res://ui/max_depth_panel.tscn" id="4_x4rdq"]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xj3g6")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -75,6 +77,7 @@ custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 
 [node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -87,6 +90,7 @@ modulate = Color(0.866667, 0.866667, 0.866667, 1)
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme = ExtResource("6_srbli")
 text = "Research"
 
@@ -95,6 +99,7 @@ modulate = Color(0.666667, 0.666667, 0.666667, 1)
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 8
 theme = ExtResource("6_srbli")
 text = "Upgrades"
 
@@ -103,10 +108,11 @@ modulate = Color(0.317771, 0.840053, 0.759831, 1)
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 0
 theme = ExtResource("6_iu0q7")
 text = "Embark"
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MainPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
 modulate = Color(0.866667, 0.866667, 0.866667, 1)
 custom_minimum_size = Vector2(0, 470)
 layout_mode = 2
