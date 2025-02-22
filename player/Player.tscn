@@ -82,6 +82,7 @@ texture = SubResource("GradientTexture2D_xmpr7")
 [node name="FlashLight" type="PointLight2D" parent="."]
 position = Vector2(32, 0)
 energy = 0.5
+shadow_enabled = true
 texture = ExtResource("11_an1ft")
 offset = Vector2(400, 0)
 
