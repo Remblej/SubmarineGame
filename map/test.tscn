@@ -1,6 +1,7 @@
-[gd_scene load_steps=57 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=58 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
+[ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://util/water_effect.tscn" id="6_gfm1a"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/tileset_bg.png" id="8_rqics"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/tileset_resources.png" id="9_tglud"]
@@ -642,6 +643,14 @@ tile_set = SubResource("TileSet_v1x37")
 
 [node name="Player" parent="." instance=ExtResource("10_b1pgp")]
 position = Vector2(-264, 183)
+
+[node name="WaterShader" parent="." instance=ExtResource("6_gfm1a")]
+position = Vector2(-596, 127)
+scale = Vector2(10, 10)
+
+[node name="WaterShader2" parent="." instance=ExtResource("6_gfm1a")]
+position = Vector2(684, 127)
+scale = Vector2(10, 10)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
