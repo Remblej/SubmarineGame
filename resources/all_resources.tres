@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="GatherableResources" load_steps=12 format=3 uid="uid://dociumj4s3vpk"]
+[gd_resource type="Resource" script_class="GatherableResources" load_steps=14 format=3 uid="uid://dociumj4s3vpk"]
 
 [ext_resource type="Script" path="res://resources/gatherable_resource.gd" id="1_tppgm"]
+[ext_resource type="AudioStream" uid="uid://c5pe1vr2vptcy" path="res://assets/sfx/metal-hit-91-200421.mp3" id="2_gsmax"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/tileset_resources.png" id="2_krrw7"]
 [ext_resource type="Script" path="res://resources/gatherable_resources.gd" id="2_vcu36"]
+[ext_resource type="AudioStream" uid="uid://ddhmfc0y80f03" path="res://assets/sfx/metal-hit-25-193291.mp3" id="3_nyeky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aekws"]
 atlas = ExtResource("2_krrw7")
@@ -15,6 +17,8 @@ name = "Gold"
 hit_points = 5
 color = Color(0.74, 0.703, 0, 1)
 icon = SubResource("AtlasTexture_aekws")
+hit_sfx = ExtResource("3_nyeky")
+destroy_sfx = ExtResource("2_gsmax")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iyvj"]
 atlas = ExtResource("2_krrw7")

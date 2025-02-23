@@ -1,12 +1,15 @@
-[gd_scene load_steps=59 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=62 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="PackedScene" uid="uid://c4noh2qbau26y" path="res://base/base.tscn" id="5_jdixt"]
 [ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://util/water_effect.tscn" id="6_gfm1a"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/tileset_bg.png" id="8_rqics"]
+[ext_resource type="Script" path="res://map/audio_manager.gd" id="8_ubxwf"]
+[ext_resource type="AudioStream" uid="uid://cmhgwgfbaj1w6" path="res://assets/sfx/hit1.mp3" id="9_875cn"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/tileset_resources.png" id="9_tglud"]
 [ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/Player.tscn" id="10_b1pgp"]
+[ext_resource type="AudioStream" uid="uid://dhhft53yqxfdy" path="res://assets/sfx/destroy1.mp3" id="10_yal1r"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0tpdm"]
 polygon = PackedVector2Array(12, -20, 20, -12, 20, 32, -20, 32, -20, -12, -12, -20)
@@ -659,3 +662,16 @@ scale = Vector2(10, 10)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
+
+[node name="AudioManager" type="Node" parent="."]
+script = ExtResource("8_ubxwf")
+default_hit_sfx = ExtResource("9_875cn")
+default_destroy_sfx = ExtResource("10_yal1r")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+
+[node name="ResourceHitPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+
+[node name="DestroyPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
+
+[node name="ResourceDestroyPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]

@@ -13,10 +13,12 @@ func _ready() -> void:
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	var coords = terrain_tml.get_coords_for_body_rid(tile)
+	var r = _resource_at(coords)
 	_tile_damage[coords] = _tile_damage.get(coords, 0) + drill_damage
+	Globals.tile_hit.emit(r)
 	if _tile_damage[coords] >= _get_hit_points(coords):
 		terrain_tml.set_cells_terrain_connect([coords], 0, -1, true)
-		var r = _resource_at(coords)
+		Globals.tile_destroyed.emit(r)
 		if r:
 			resources_tml.erase_cell(coords)
 			Globals.resource_drilled.emit(r)

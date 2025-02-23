@@ -1,6 +1,8 @@
 extends Node
 
 signal drill_hit(tile: RID, drill_damage: int)
+signal tile_hit(resource: GatherableResource) # resource is nullable
+signal tile_destroyed(resource: GatherableResource) # resource is nullable
 signal resource_drilled(resource: GatherableResource)
 signal depth_changed(depth: int)
 signal max_depth_changed(max_depth: int)

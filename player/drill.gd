@@ -3,7 +3,7 @@ class_name Drill extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
 
-var damage = 2
+var damage = 1
 var cooldown = .5 # s
 var _can_hit = true
 
