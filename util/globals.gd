@@ -10,6 +10,8 @@ signal battery_energy_changed(current_level: float, capacity: float)
 signal battery_depleted
 signal battery_fully_charged
 signal velocity_changed(velocity: Vector2)
+signal entered_base
+signal exited_base
 
 @export var all_resources: GatherableResources
 var resource_by_id: Dictionary # [resource_id: int, GatherableResource]

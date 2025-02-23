@@ -13,6 +13,8 @@ var _charging_rate: float = 5 # /s
 func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
 	Globals.velocity_changed.connect(_on_velocity_changed)
+	Globals.entered_base.connect(func(): _is_charging = true)
+	Globals.exited_base.connect(func(): _is_charging = false)
 
 func _process(delta: float) -> void:
 	var change = 0
@@ -24,9 +26,6 @@ func _process(delta: float) -> void:
 
 func is_depleted() -> bool:
 	return _current_level <= 0
-
-func set_charging(charging: bool):
-	_is_charging = charging
 
 func _on_velocity_changed(velocity: Vector2):
 	_is_engine_used = velocity.length_squared() > 0

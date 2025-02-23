@@ -30,6 +30,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.487179)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 5
 script = ExtResource("1_46rre")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
