@@ -19,5 +19,5 @@ func _on_resource_drilled(resource: GatherableResource):
 func _spawn_floating_text(text: String, color: Color):
 	var t = floating_text_scene.instantiate() as FloatingText
 	t.set_text(text, color)
-	t.global_position = get_parent().global_position
+	t.global_position = get_parent().global_position + Vector2.UP * 32
 	get_tree().root.add_child(t)

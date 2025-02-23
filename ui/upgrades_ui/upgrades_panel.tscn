@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs7ow1e3s5aym"]
+[gd_scene load_steps=10 format=3 uid="uid://cs7ow1e3s5aym"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_jnmrq"]
 [ext_resource type="Script" path="res://ui/upgrades_ui/upgrades_panel.gd" id="1_xj3g6"]
@@ -9,7 +9,6 @@
 [ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="6_iu0q7"]
 [ext_resource type="Theme" uid="uid://dkx5687maa13f" path="res://ui/panel_theme_rounded_top_light.tres" id="6_srbli"]
 [ext_resource type="PackedScene" uid="uid://d3l852vwott67" path="res://ui/upgrades_ui/research_panel.tscn" id="9_7448f"]
-[ext_resource type="PackedScene" uid="uid://ded5uildb1nb5" path="res://ui/upgrades_ui/resource_research_button.tscn" id="10_hvcnw"]
 
 [node name="UpgradesPanel" type="Control"]
 layout_mode = 3
@@ -120,4 +119,3 @@ theme = ExtResource("6_iu0q7")
 
 [node name="ResearchPanel" parent="Panel/MarginContainer/VBoxContainer/MainPanel" instance=ExtResource("9_7448f")]
 layout_mode = 1
-resource_button_scene = ExtResource("10_hvcnw")

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/tileset_bg.png" id="8_rqics"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/tileset_resources.png" id="9_tglud"]
-[ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/player.tscn" id="10_b1pgp"]
+[ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/Player.tscn" id="10_b1pgp"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0tpdm"]
 polygon = PackedVector2Array(12, -20, 20, -12, 20, 32, -20, 32, -20, -12, -12, -20)
