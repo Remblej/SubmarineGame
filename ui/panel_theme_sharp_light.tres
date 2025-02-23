@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://btaiq5b261hxb"]
 
-[ext_resource type="FontFile" uid="uid://b1oo0ebnwqli0" path="res://assets/Graduate-Regular.ttf" id="1_8grsq"]
-[ext_resource type="Texture2D" uid="uid://bjngonuhskrai" path="res://assets/ui_panel_sharp_white.png" id="2_lwrwu"]
+[ext_resource type="FontFile" uid="uid://b1oo0ebnwqli0" path="res://assets/font/Graduate-Regular.ttf" id="1_8grsq"]
+[ext_resource type="Texture2D" uid="uid://bjngonuhskrai" path="res://assets/graphics/ui_panel_sharp_white.png" id="2_lwrwu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbr5o"]
 content_margin_left = 4.0

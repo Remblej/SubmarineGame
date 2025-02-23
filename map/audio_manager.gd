@@ -15,9 +15,11 @@ func _ready() -> void:
 	destroy_player.stream = default_destroy_sfx 
 
 func _on_tile_hit(resource: GatherableResource):
+	hit_player.pitch_scale = randf_range(.9, 1.1)
 	hit_player.play()
 	if resource and resource.hit_sfx:
 		resource_hit_player.stream = resource.hit_sfx
+		resource_hit_player.pitch_scale = randf_range(.97, 1.03)
 		resource_hit_player.play()
 	
 
