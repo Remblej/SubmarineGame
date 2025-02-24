@@ -684,7 +684,6 @@ tile_set = SubResource("TileSet_v1x37")
 
 [node name="MapGenerator" type="Node" parent="Map" node_paths=PackedStringArray("terrain_tml", "resources_tml")]
 script = ExtResource("7_11icf")
-cave_threshold = 0.7
 caves_noise = SubResource("FastNoiseLite_5efss")
 resource_noise = SubResource("FastNoiseLite_meun0")
 terrain_tml = NodePath("../TerrainTML")

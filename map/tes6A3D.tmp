@@ -1,10 +1,9 @@
-[gd_scene load_steps=68 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=67 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="Texture2D" uid="uid://ckgtpxymrmbhh" path="res://assets/graphics/tileset_debug.png" id="5_63qgv"]
 [ext_resource type="PackedScene" uid="uid://c4noh2qbau26y" path="res://base/base.tscn" id="5_jdixt"]
 [ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://util/water_effect.tscn" id="6_gfm1a"]
-[ext_resource type="Script" path="res://map/map_generator.gd" id="7_11icf"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/graphics/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/graphics/tileset_bg.png" id="8_rqics"]
 [ext_resource type="Script" path="res://map/audio_manager.gd" id="8_ubxwf"]
@@ -13,6 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/player.tscn" id="10_b1pgp"]
 [ext_resource type="AudioStream" uid="uid://dhhft53yqxfdy" path="res://assets/sfx/destroy1.mp3" id="10_yal1r"]
 [ext_resource type="AudioStream" uid="uid://cfveo0br1qv1d" path="res://assets/music/One Man Symphony - Collateral Damage (Free) - 06 Exploration Theme 01.mp3" id="11_b86c5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5efss"]
+noise_type = 5
+frequency = 0.1063
+fractal_type = 2
+fractal_octaves = 3
+fractal_lacunarity = 1.495
+fractal_gain = 0.86
+fractal_weighted_strength = 0.14
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_meun0"]
+noise_type = 2
+frequency = 0.2454
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0tpdm"]
 polygon = PackedVector2Array(12, -20, 20, -12, 20, 32, -20, 32, -20, -12, -12, -20)
@@ -647,23 +659,16 @@ sources/1 = SubResource("TileSetAtlasSource_wga72")
 sources/2 = SubResource("TileSetAtlasSource_tfcjr")
 sources/3 = SubResource("TileSetAtlasSource_ihwog")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5efss"]
-noise_type = 5
-frequency = 0.1063
-fractal_type = 2
-fractal_octaves = 3
-fractal_lacunarity = 1.495
-fractal_gain = 0.86
-fractal_weighted_strength = 0.14
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_meun0"]
-noise_type = 3
-frequency = 0.1634
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("1_f2k5u")
+width = null
+height = null
+cave_threshold = 0.7
+resource_threshold = 0.1
+caves_noise = SubResource("FastNoiseLite_5efss")
+resource_noise = SubResource("FastNoiseLite_meun0")
 
 [node name="BackgroundTML" type="TileMapLayer" parent="Map"]
 modulate = Color(0.109804, 0.164706, 0.380392, 1)
@@ -681,14 +686,6 @@ tile_map_data = PackedByteArray("AAD6/w8AAgAAAAAAAAD5/w4AAgABAAAAAAD6/wwAAgACAAA
 tile_set = SubResource("TileSet_v1x37")
 
 [node name="Base" parent="Map" instance=ExtResource("5_jdixt")]
-
-[node name="MapGenerator" type="Node" parent="Map" node_paths=PackedStringArray("terrain_tml", "resources_tml")]
-script = ExtResource("7_11icf")
-cave_threshold = 0.7
-caves_noise = SubResource("FastNoiseLite_5efss")
-resource_noise = SubResource("FastNoiseLite_meun0")
-terrain_tml = NodePath("../TerrainTML")
-resources_tml = NodePath("../ResourcesTML")
 
 [node name="Player" parent="." instance=ExtResource("10_b1pgp")]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
-[ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_5xngl"]
+[ext_resource type="Texture2D" uid="uid://n8yi1i5dcmb3" path="res://assets/graphics/submarine.png" id="2_m8vb3"]
 [ext_resource type="Script" path="res://player/movement.gd" id="3_r68kt"]
 [ext_resource type="PackedScene" uid="uid://c2gwxiu7kkwvs" path="res://ui/hud.tscn" id="4_0tymi"]
 [ext_resource type="Script" path="res://player/drill.gd" id="4_ydsbw"]
@@ -13,10 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/graphics/tex_cone.png" id="11_an1ft"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
-radius = 12.0
-height = 84.0
+radius = 21.0
+height = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ra0fu"]
+radius = 6.70797
 
 [sub_resource type="Gradient" id="Gradient_by1ny"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -34,8 +35,9 @@ collision_layer = 5
 script = ExtResource("1_46rre")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.65625, 0.1875)
-texture = ExtResource("2_5xngl")
+scale = Vector2(0.381818, 0.381818)
+texture = ExtResource("2_m8vb3")
+flip_h = true
 
 [node name="Movement" type="Node2D" parent="."]
 script = ExtResource("3_r68kt")
@@ -45,6 +47,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_yno6g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
 process_callback = 0
 position_smoothing_enabled = true
 
@@ -54,7 +57,7 @@ collision_mask = 2
 script = ExtResource("4_ydsbw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drill"]
-position = Vector2(41, 0)
+position = Vector2(40.35, 11.705)
 shape = SubResource("CircleShape2D_ra0fu")
 
 [node name="Timer" type="Timer" parent="Drill"]
@@ -85,10 +88,10 @@ position = Vector2(32, 0)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("11_an1ft")
-offset = Vector2(400, 0)
+offset = Vector2(396, 15)
 
 [node name="FlashLight2" type="PointLight2D" parent="."]
 position = Vector2(32, 0)
 energy = 0.2
 texture = ExtResource("11_an1ft")
-offset = Vector2(400, 0)
+offset = Vector2(396, 15)

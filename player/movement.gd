@@ -1,7 +1,7 @@
 class_name Movement extends Node2D
 
 # Max forward speed
-var forward_speed = 250.0 # px/s
+@export var forward_speed = 250.0 # px/s
 var recoil = -150.0 # px/s backward
 var turning_speed = TAU/2 # radians/s
 var acceleration = .1 # between 0 and 1 (i.e. 0.25 it means it covers 75% of the remaining distance per second)

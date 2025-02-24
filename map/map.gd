@@ -1,8 +1,12 @@
 extends Node2D
 
+@export var width = 64
+@export var height = 64
+
 @onready var background_tml: TileMapLayer = $BackgroundTML
 @onready var terrain_tml: TileMapLayer = $TerrainTML
 @onready var resources_tml: TileMapLayer = $ResourcesTML
+@onready var map_generator: MapGenerator = $MapGenerator
 
 var default_terrain_hit_points = 2 # todo based on depth / biome
 var resource_hit_points: Dictionary = {} # [resource_id: int, hit_points: int]
@@ -10,6 +14,7 @@ var _tile_damage: Dictionary = {} # [Vector2i, int] # TODO clean to avoid memory
 
 func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
+	generate()
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	var coords = terrain_tml.get_coords_for_body_rid(tile)
@@ -36,3 +41,10 @@ func _resource_at(coords: Vector2i) -> GatherableResource:
 		if r_id:
 			return Globals.resource_by_id.get(r_id, null)
 	return null
+	
+func generate():
+	map_generator.generate(width, height)
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_btn"):
+		generate()

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GatherableResources" load_steps=14 format=3 uid="uid://dociumj4s3vpk"]
+[gd_resource type="Resource" script_class="GatherableResources" load_steps=19 format=3 uid="uid://dociumj4s3vpk"]
 
 [ext_resource type="Script" path="res://resources/gatherable_resource.gd" id="1_tppgm"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/graphics/tileset_resources.png" id="2_krrw7"]
@@ -6,9 +6,18 @@
 [ext_resource type="AudioStream" uid="uid://bys88lyc6w30l" path="res://assets/sfx/metal-hit-73-193332.mp3" id="3_b1rxd"]
 [ext_resource type="AudioStream" uid="uid://ddhmfc0y80f03" path="res://assets/sfx/metal-hit-25-193291.mp3" id="3_nyeky"]
 
+[sub_resource type="Curve" id="Curve_h4gqf"]
+max_value = 20.0
+_data = [Vector2(0, 1), 0.0, 12.6899, 0, 0, Vector2(1, 20), 42.0275, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_aekws"]
 atlas = ExtResource("2_krrw7")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Curve" id="Curve_4ik5f"]
+_data = [Vector2(0, 0), 0.0, 2.33114, 0, 0, Vector2(0.255965, 0.756713), 2.55227, 2.55227, 0, 0, Vector2(0.503254, 1), 0.0, 0.0, 0, 0, Vector2(0.985586, 0), -4.55143, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Resource" id="Resource_v07kb"]
 script = ExtResource("1_tppgm")
@@ -19,10 +28,22 @@ color = Color(0.74, 0.703, 0, 1)
 icon = SubResource("AtlasTexture_aekws")
 hit_sfx = ExtResource("3_b1rxd")
 destroy_sfx = ExtResource("3_b1rxd")
+atlas_coords = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)])
+base_rarity = 1.0
+rarity_curve = SubResource("Curve_4ik5f")
+min_clusters = 10
+max_clusters = 20
+cluster_size_probability = SubResource("Curve_h4gqf")
+min_cluster_size = 1
+max_cluster_size = 6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iyvj"]
 atlas = ExtResource("2_krrw7")
 region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="Curve" id="Curve_81agc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.754881, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Resource" id="Resource_xk6jg"]
 script = ExtResource("1_tppgm")
@@ -33,10 +54,21 @@ color = Color(0.96, 0.55168, 0.1152, 1)
 icon = SubResource("AtlasTexture_6iyvj")
 hit_sfx = ExtResource("3_nyeky")
 destroy_sfx = ExtResource("3_nyeky")
+atlas_coords = Array[Vector2i]([Vector2i(0, 2)])
+base_rarity = 0.0
+rarity_curve = SubResource("Curve_81agc")
+min_clusters = 20
+max_clusters = 40
+min_cluster_size = 3
+max_cluster_size = 15
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icr1h"]
 atlas = ExtResource("2_krrw7")
 region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="Curve" id="Curve_t336u"]
+_data = [Vector2(0.75705, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Resource" id="Resource_s6l5o"]
 script = ExtResource("1_tppgm")
@@ -45,10 +77,21 @@ name = "Diamond"
 hit_points = 10
 color = Color(0.1209, 0.93, 0.781665, 1)
 icon = SubResource("AtlasTexture_icr1h")
+atlas_coords = Array[Vector2i]([Vector2i(0, 3)])
+base_rarity = 1.0
+rarity_curve = SubResource("Curve_t336u")
+min_clusters = 5
+max_clusters = 6
+min_cluster_size = 2
+max_cluster_size = 7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08fbn"]
 atlas = ExtResource("2_krrw7")
 region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="Curve" id="Curve_treo5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.260304, 1), 0.0, 0.0, 0, 0, Vector2(0.507592, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Resource" id="Resource_0ece6"]
 script = ExtResource("1_tppgm")
@@ -57,6 +100,13 @@ name = "Iron"
 hit_points = 8
 color = Color(0.568973, 0.568973, 0.568973, 1)
 icon = SubResource("AtlasTexture_08fbn")
+atlas_coords = Array[Vector2i]([Vector2i(0, 1)])
+base_rarity = 1.0
+rarity_curve = SubResource("Curve_treo5")
+min_clusters = 10
+max_clusters = 15
+min_cluster_size = 2
+max_cluster_size = 15
 
 [resource]
 script = ExtResource("2_vcu36")
