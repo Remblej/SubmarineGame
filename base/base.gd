@@ -7,7 +7,9 @@ func _ready() -> void:
 	area_2d.body_exited.connect(_on_player_exit)
 	
 func _on_player_enter(body: Node2D):
-	Globals.entered_base.emit()
+	if body is Player:
+		Globals.entered_base.emit(body as Player)
 	
 func _on_player_exit(body: Node2D):
-	Globals.exited_base.emit()
+	if body is Player:
+		Globals.exited_base.emit(body as Player)

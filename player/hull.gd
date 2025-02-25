@@ -11,8 +11,8 @@ var _is_repairing = false
 
 func _ready() -> void:
 	Globals.depth_changed.connect(func(depth): _current_depth = depth)
-	Globals.entered_base.connect(func(): _is_repairing = true)
-	Globals.exited_base.connect(func(): _is_repairing = false)
+	Globals.entered_base.connect(func(player): _is_repairing = true)
+	Globals.exited_base.connect(func(player): _is_repairing = false)
 
 func _process(delta: float) -> void:
 	_current_hull_integrity += (_calc_hull_repair() - _calc_hull_damage()) * delta

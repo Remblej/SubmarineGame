@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4noh2qbau26y"]
+[gd_scene load_steps=5 format=3 uid="uid://c4noh2qbau26y"]
 
 [ext_resource type="Script" path="res://base/base.gd" id="1_4w4qf"]
 [ext_resource type="Texture2D" uid="uid://cq2gcq38t5q31" path="res://icon.svg" id="2_8535d"]
+[ext_resource type="Script" path="res://base/storage.gd" id="3_8e73m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piqk5"]
 size = Vector2(640, 256)
@@ -23,3 +24,6 @@ self_modulate = Color(1, 1, 1, 0.0588235)
 position = Vector2(0, -128)
 scale = Vector2(5, 2)
 texture = ExtResource("2_8535d")
+
+[node name="Storage" type="Node" parent="."]
+script = ExtResource("3_8e73m")

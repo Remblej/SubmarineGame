@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var movement: Movement = $Movement
 @onready var drill: Drill = $Drill
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var cargo: Cargo = $Cargo
 
 var _depth: int
 

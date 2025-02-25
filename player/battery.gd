@@ -13,8 +13,8 @@ var _charging_rate: float = 5 # /s
 func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
 	Globals.velocity_changed.connect(_on_velocity_changed)
-	Globals.entered_base.connect(func(): _is_charging = true)
-	Globals.exited_base.connect(func(): _is_charging = false)
+	Globals.entered_base.connect(func(player): _is_charging = true)
+	Globals.exited_base.connect(func(player): _is_charging = false)
 
 func _process(delta: float) -> void:
 	var change = 0
