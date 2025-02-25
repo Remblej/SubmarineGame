@@ -10,6 +10,7 @@ size = Vector2(640, 256)
 script = ExtResource("1_4w4qf")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -256)
 collision_layer = 0
 collision_mask = 4
 
@@ -19,6 +20,6 @@ shape = SubResource("RectangleShape2D_piqk5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.0588235)
-position = Vector2(0, 128)
+position = Vector2(0, -128)
 scale = Vector2(5, 2)
 texture = ExtResource("2_8535d")

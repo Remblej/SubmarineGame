@@ -697,16 +697,13 @@ resource_noise = SubResource("FastNoiseLite_meun0")
 [node name="Player" parent="." instance=ExtResource("10_b1pgp")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
 blend_mode = 1
 
 [node name="WaterShader" parent="." instance=ExtResource("6_gfm1a")]
-visible = false
 position = Vector2(-596, 127)
 scale = Vector2(10, 10)
 
 [node name="WaterShader2" parent="." instance=ExtResource("6_gfm1a")]
-visible = false
 position = Vector2(684, 127)
 scale = Vector2(10, 10)
 
