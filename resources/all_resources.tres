@@ -7,8 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ddhmfc0y80f03" path="res://assets/sfx/metal-hit-25-193291.mp3" id="3_nyeky"]
 
 [sub_resource type="Curve" id="Curve_h4gqf"]
-max_value = 20.0
-_data = [Vector2(0, 1), 0.0, 12.6899, 0, 0, Vector2(1, 20), 42.0275, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.374219, 0, 0, Vector2(1, 1), 2.69797, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aekws"]
@@ -33,9 +32,9 @@ base_rarity = 1.0
 rarity_curve = SubResource("Curve_4ik5f")
 min_clusters = 10
 max_clusters = 20
-cluster_size_probability = SubResource("Curve_h4gqf")
 min_cluster_size = 1
 max_cluster_size = 6
+cluster_size_probability = SubResource("Curve_h4gqf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iyvj"]
 atlas = ExtResource("2_krrw7")
@@ -61,6 +60,7 @@ min_clusters = 20
 max_clusters = 40
 min_cluster_size = 3
 max_cluster_size = 15
+cluster_size_probability = SubResource("Curve_h4gqf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_icr1h"]
 atlas = ExtResource("2_krrw7")
@@ -84,6 +84,7 @@ min_clusters = 5
 max_clusters = 6
 min_cluster_size = 2
 max_cluster_size = 7
+cluster_size_probability = SubResource("Curve_h4gqf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08fbn"]
 atlas = ExtResource("2_krrw7")
@@ -107,6 +108,7 @@ min_clusters = 10
 max_clusters = 15
 min_cluster_size = 2
 max_cluster_size = 15
+cluster_size_probability = SubResource("Curve_h4gqf")
 
 [resource]
 script = ExtResource("2_vcu36")

@@ -59,7 +59,7 @@ func grow_cluster(resource: GatherableResource, center: Vector2i):
 	var frontier = [center]
 	var visited = [center]
 	var cluster_size = 1
-	var target_size = randi_range(resource.min_cluster_size, resource.max_cluster_size)
+	var target_size = lerp(resource.min_cluster_size, resource.max_cluster_size, resource.cluster_size_probability.sample(randf()))
 	var directions = [Vector2i(-1,0), Vector2i(1,0), Vector2i(0,-1), Vector2i(0,1)]
 	directions.shuffle()
 

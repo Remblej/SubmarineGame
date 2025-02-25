@@ -14,6 +14,6 @@ class_name GatherableResource extends Resource
 
 @export var min_clusters: int
 @export var max_clusters: int
-@export var cluster_size_probability: Curve 
 @export var min_cluster_size: int
 @export var max_cluster_size: int
+@export var cluster_size_probability: Curve 
