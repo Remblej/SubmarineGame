@@ -4,17 +4,7 @@ class_name MapGenerator extends Node
 @export var caves_noise: FastNoiseLite
 @export var resource_noise: FastNoiseLite
 
-@export var terrain_tml: TileMapLayer
-@export var resources_tml: TileMapLayer
-
-func generate(width: int, height: int):
-	terrain_tml.clear()
-	resources_tml.clear()
-	_spawn_terrain(width, height)
-	for r in Globals.all_resources.resources:
-		_spawn_resource(r, width, height)
-
-func _spawn_terrain(width: int, height: int):
+func spawn_terrain(width: int, height: int, terrain_tml: TileMapLayer):
 	caves_noise.seed = randi()
 	for x in range(-width/2, width/2):
 		for y in range(0, height):
@@ -22,9 +12,13 @@ func _spawn_terrain(width: int, height: int):
 			if caves_noise.get_noise_2d(x, y) <= cave_threshold:
 				terrain_tml.set_cells_terrain_connect([coords], 0, 0, false)
 			else:
-				resources_tml.erase_cell(coords)
+				terrain_tml.erase_cell(coords)
 
-func _spawn_resource(resource: GatherableResource, width: int, height: int):
+func spawn_resources(width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
+	for r in Globals.all_resources.resources:
+		_spawn_resource(r, width, height, terrain_tml, resource_tml)
+		
+func _spawn_resource(resource: GatherableResource, width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
 	resource_noise.seed = randi()
 	var noise_values: Array[ValueEntry] = []
 	for x in range(-width/2, width/2):
@@ -42,20 +36,20 @@ func _spawn_resource(resource: GatherableResource, width: int, height: int):
 		# Check if there is terrain underneath
 		if terrain_tml.get_cell_source_id(candidate.pos) == -1:
 			continue
-		if _is_or_neighbours_resource(candidate.pos):
+		if _is_or_neighbours_resource(candidate.pos, resource_tml):
 			continue
-		_set_resource_tile(resource, candidate.pos)
-		grow_cluster(resource, candidate.pos)
+		_set_resource_tile(resource, candidate.pos, resource_tml)
+		grow_cluster(resource, candidate.pos, terrain_tml, resource_tml)
 		cluster_count += 1
 
-func _is_or_neighbours_resource(pos: Vector2i):
+func _is_or_neighbours_resource(pos: Vector2i, tml: TileMapLayer):
 	for x in [pos.x - 1, pos.x, pos.x + 1]:
 		for y in [pos.y - 1, pos.y, pos.y + 1]:
-			if resources_tml.get_cell_source_id(Vector2i(x, y)) != -1:
+			if tml.get_cell_source_id(Vector2i(x, y)) != -1:
 				return true
 	return false
 
-func grow_cluster(resource: GatherableResource, center: Vector2i):
+func grow_cluster(resource: GatherableResource, center: Vector2i, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
 	var frontier = [center]
 	var visited = [center]
 	var cluster_size = 1
@@ -75,13 +69,13 @@ func grow_cluster(resource: GatherableResource, center: Vector2i):
 				continue
 			# Optional: add a probability check to make growth irregular
 			if randf() < .8:
-				_set_resource_tile(resource, neighbor)
+				_set_resource_tile(resource, neighbor, resource_tml)
 				frontier.append(neighbor)
 				cluster_size += 1
 
-func _set_resource_tile(resource: GatherableResource, coords: Vector2i):
+func _set_resource_tile(resource: GatherableResource, coords: Vector2i, resource_tml: TileMapLayer):
 	var atlas_coords = resource.atlas_coords.pick_random()
-	resources_tml.set_cell(coords, 2, atlas_coords)
+	resource_tml.set_cell(coords, 2, atlas_coords)
 
 class ValueEntry:
 	var pos: Vector2i
