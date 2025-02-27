@@ -11,24 +11,33 @@ class ValueEntry:
 	var value: float
 
 func spawn_terrain(settings: MapGenerationSettings, terrain_tml: TileMapLayer, boundary_tml: TileMapLayer):
+	var time = Time.get_unix_time_from_system()
 	caves_noise.seed = randi()
 	bounds_noise.seed = randi()
-	var bounds_insets = _calc_bounds_insets(settings)
+	var bounds_fluctuations_factors = _calc_bounds_fluctuation_factors(settings)
+	var terrain_coords = []
+	var boundary_cords = []
 	
 	for x in range(settings.total_area.position.x, settings.total_area.end.x):
 		for y in range(settings.total_area.position.y, settings.total_area.end.y):
 			var coords = Vector2i(x, y)
 			if is_in_no_generation_zone(coords, settings):
 				continue
-			if _is_in_playable_area(coords, settings, bounds_insets):
+			if _is_in_playable_area(coords, settings, bounds_fluctuations_factors):
 				if caves_noise.get_noise_2d(x, y) <= cave_threshold:
-					terrain_tml.set_cells_terrain_connect([coords], 0, 0, false)
+					terrain_coords.push_back(coords)
 			elif not is_in_no_bounds_zone(coords, settings):
-				boundary_tml.set_cells_terrain_connect([coords], 0, 0, false)
+				boundary_cords.push_back(coords)
+	terrain_tml.set_cells_terrain_connect(terrain_coords, 0, 0, false)
+	boundary_tml.set_cells_terrain_connect(boundary_cords, 0, 0, false)
+
+	print("terrain generated in: " + str(Time.get_unix_time_from_system() - time))
 
 func spawn_resources(width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
+	var time = Time.get_unix_time_from_system()
 	for r in Globals.all_resources.resources:
 		_spawn_resource(r, width, height, terrain_tml, resource_tml)
+	print("resources generated in: " + str(Time.get_unix_time_from_system() - time))
 		
 func _spawn_resource(resource: GatherableResource, width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
 	resource_noise.seed = randi()
@@ -101,12 +110,12 @@ func is_in_no_bounds_zone(coords: Vector2i, settings: MapGenerationSettings) -> 
 			return true
 	return false
 	
-func _is_in_playable_area(coords: Vector2i, settings: MapGenerationSettings, bounds_insets: Dictionary) -> bool:
+func _is_in_playable_area(coords: Vector2i, settings: MapGenerationSettings, bounds_fluctuations_factors: Dictionary) -> bool:
 	if not settings.playable_area.has_point(coords): # out of playable area
 		return false
 	if is_in_no_bounds_zone(coords, settings): # if in no bounds area, ignore bounds calculation below
 		return true
-	return _distance_to_playable_edge(coords, settings) >= _get_inset(coords, bounds_insets) * bounds_fluctuation
+	return _distance_to_playable_edge(coords, settings) >= _get_bound_fluctuations_factor(coords, bounds_fluctuations_factors) * bounds_fluctuation
 
 func _distance_to_playable_edge(coords: Vector2i, settings: MapGenerationSettings) -> int:
 	var distance_to_left = abs(coords.x - settings.playable_area.position.x)
@@ -115,7 +124,7 @@ func _distance_to_playable_edge(coords: Vector2i, settings: MapGenerationSetting
 	var distance_to_bottom = abs(coords.y - (settings.playable_area.end.y - 1))
 	return min(distance_to_left, distance_to_right, distance_to_top, distance_to_bottom)
 
-func _calc_bounds_insets(settings: MapGenerationSettings) -> Dictionary:
+func _calc_bounds_fluctuation_factors(settings: MapGenerationSettings) -> Dictionary:
 	var bounds = {} ## Dictionary[Vector2i, int]
 	for x in range(settings.playable_area.position.x, settings.playable_area.end.x + 1):
 		for y in [settings.playable_area.position.y, settings.playable_area.end.y + 1]:
@@ -130,15 +139,15 @@ func _calc_bounds_insets(settings: MapGenerationSettings) -> Dictionary:
 		bounds[v] = (val - min) / (max - min)
 	return bounds
 
-func _get_inset(coords: Vector2i, bounds_insets: Dictionary) -> float:
+func _get_bound_fluctuations_factor(coords: Vector2i, bounds_fluctuations_factors: Dictionary) -> float:
 	var closest
 	var smallest_distance = INF
-	for v in bounds_insets.keys():
+	for v in bounds_fluctuations_factors.keys():
 		var distance = (coords - v).length_squared()
 		if distance < smallest_distance:
 			smallest_distance = distance
 			closest = v
-	return bounds_insets[closest]
+	return bounds_fluctuations_factors[closest]
 
 class MapGenerationSettings:
 	var total_area: Rect2i ## area including playable area and margin around it

@@ -50,6 +50,7 @@ func _resource_at(coords: Vector2i) -> GatherableResource:
 	return null
 	
 func generate():
+	var time = Time.get_unix_time_from_system()
 	terrain_tml.clear()
 	boundary_tml.clear()
 	resources_tml.clear()
@@ -63,6 +64,7 @@ func generate():
 	map_generator.spawn_terrain(settings, terrain_tml, boundary_tml)
 	map_generator.spawn_resources(width, height, terrain_tml, hidden_resources_tml)
 	_reveal_resources_initially()
+	print("full generation took: " + str(Time.get_unix_time_from_system() - time))
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_btn"):
