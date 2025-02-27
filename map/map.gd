@@ -2,9 +2,12 @@ extends Node2D
 
 @export var width = 64
 @export var height = 64
+@export var bounds_padding = 16
+@export var base_tunnel_width = 4
 
 @onready var background_tml: TileMapLayer = $BackgroundTML
 @onready var terrain_tml: TileMapLayer = $TerrainTML
+@onready var boundary_tml: TileMapLayer = $BoundaryTML
 @onready var hidden_resources_tml: TileMapLayer = $HiddenResourcesTML
 @onready var resources_tml: TileMapLayer = $ResourcesTML
 @onready var map_generator: MapGenerator = $MapGenerator
@@ -19,6 +22,8 @@ func _ready() -> void:
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	var coords = terrain_tml.get_coords_for_body_rid(tile)
+	if terrain_tml.get_cell_source_id(coords) == -1:
+		return
 	var r = _resource_at(coords)
 	_tile_damage[coords] = _tile_damage.get(coords, 0) + drill_damage
 	Globals.tile_hit.emit(r)
@@ -46,9 +51,16 @@ func _resource_at(coords: Vector2i) -> GatherableResource:
 	
 func generate():
 	terrain_tml.clear()
+	boundary_tml.clear()
 	resources_tml.clear()
 	hidden_resources_tml.clear()
-	map_generator.spawn_terrain(width, height, terrain_tml)
+	var settings = MapGenerator.MapGenerationSettings.new()
+	settings.playable_area = Rect2i().grow_individual(width/2, 0, width/2, height)
+	settings.total_area = settings.playable_area.grow_individual(bounds_padding, 1, bounds_padding, bounds_padding)
+	settings.no_generation_zones.push_back(Rect2i().grow_individual(8, 8, 8, 0)) # base area above playable area
+	settings.no_generation_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, 4)) # small dug out area below base
+	settings.no_bounds_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, height/2)) # make sure no bounds generate under base
+	map_generator.spawn_terrain(settings, terrain_tml, boundary_tml)
 	map_generator.spawn_resources(width, height, terrain_tml, hidden_resources_tml)
 	_reveal_resources_initially()
 	

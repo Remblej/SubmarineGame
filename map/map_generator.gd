@@ -3,16 +3,28 @@ class_name MapGenerator extends Node
 @export var cave_threshold: float = 0
 @export var caves_noise: FastNoiseLite
 @export var resource_noise: FastNoiseLite
+@export var bounds_noise: FastNoiseLite
+@export var bounds_fluctuation = 5.0
 
-func spawn_terrain(width: int, height: int, terrain_tml: TileMapLayer):
+class ValueEntry:
+	var pos: Vector2i
+	var value: float
+
+func spawn_terrain(settings: MapGenerationSettings, terrain_tml: TileMapLayer, boundary_tml: TileMapLayer):
 	caves_noise.seed = randi()
-	for x in range(-width/2, width/2):
-		for y in range(0, height):
+	bounds_noise.seed = randi()
+	var bounds_insets = _calc_bounds_insets(settings)
+	
+	for x in range(settings.total_area.position.x, settings.total_area.end.x):
+		for y in range(settings.total_area.position.y, settings.total_area.end.y):
 			var coords = Vector2i(x, y)
-			if caves_noise.get_noise_2d(x, y) <= cave_threshold:
-				terrain_tml.set_cells_terrain_connect([coords], 0, 0, false)
-			else:
-				terrain_tml.erase_cell(coords)
+			if is_in_no_generation_zone(coords, settings):
+				continue
+			if _is_in_playable_area(coords, settings, bounds_insets):
+				if caves_noise.get_noise_2d(x, y) <= cave_threshold:
+					terrain_tml.set_cells_terrain_connect([coords], 0, 0, false)
+			elif not is_in_no_bounds_zone(coords, settings):
+				boundary_tml.set_cells_terrain_connect([coords], 0, 0, false)
 
 func spawn_resources(width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
 	for r in Globals.all_resources.resources:
@@ -77,6 +89,60 @@ func _set_resource_tile(resource: GatherableResource, coords: Vector2i, resource
 	var atlas_coords = resource.atlas_coords.pick_random()
 	resource_tml.set_cell(coords, 2, atlas_coords)
 
-class ValueEntry:
-	var pos: Vector2i
-	var value: float
+func is_in_no_generation_zone(coords: Vector2i, settings: MapGenerationSettings) -> bool:
+	for no_zone in settings.no_generation_zones:
+		if no_zone.has_point(coords):
+			return true
+	return false
+
+func is_in_no_bounds_zone(coords: Vector2i, settings: MapGenerationSettings) -> bool:
+	for no_zone in settings.no_bounds_zones:
+		if no_zone.has_point(coords):
+			return true
+	return false
+	
+func _is_in_playable_area(coords: Vector2i, settings: MapGenerationSettings, bounds_insets: Dictionary) -> bool:
+	if not settings.playable_area.has_point(coords): # out of playable area
+		return false
+	if is_in_no_bounds_zone(coords, settings): # if in no bounds area, ignore bounds calculation below
+		return true
+	return _distance_to_playable_edge(coords, settings) >= _get_inset(coords, bounds_insets) * bounds_fluctuation
+
+func _distance_to_playable_edge(coords: Vector2i, settings: MapGenerationSettings) -> int:
+	var distance_to_left = abs(coords.x - settings.playable_area.position.x)
+	var distance_to_right = abs(coords.x - (settings.playable_area.end.x - 1))
+	var distance_to_top = abs(coords.y - settings.playable_area.position.y)
+	var distance_to_bottom = abs(coords.y - (settings.playable_area.end.y - 1))
+	return min(distance_to_left, distance_to_right, distance_to_top, distance_to_bottom)
+
+func _calc_bounds_insets(settings: MapGenerationSettings) -> Dictionary:
+	var bounds = {} ## Dictionary[Vector2i, int]
+	for x in range(settings.playable_area.position.x, settings.playable_area.end.x + 1):
+		for y in [settings.playable_area.position.y, settings.playable_area.end.y + 1]:
+			bounds[Vector2i(x, y)] = bounds_noise.get_noise_2d(x+1000, y+1000)
+	for x in [settings.playable_area.position.x, settings.playable_area.end.x + 1]:
+		for y in range(settings.playable_area.position.y, settings.playable_area.end.y + 1):
+			bounds[Vector2i(x, y)] = bounds_noise.get_noise_2d(x+1000, y+1000)
+	var min = bounds.values().min()
+	var max = bounds.values().max()
+	for v in bounds.keys():
+		var val = float(bounds[v])
+		bounds[v] = (val - min) / (max - min)
+	return bounds
+
+func _get_inset(coords: Vector2i, bounds_insets: Dictionary) -> float:
+	var closest
+	var smallest_distance = INF
+	for v in bounds_insets.keys():
+		var distance = (coords - v).length_squared()
+		if distance < smallest_distance:
+			smallest_distance = distance
+			closest = v
+	return bounds_insets[closest]
+
+class MapGenerationSettings:
+	var total_area: Rect2i ## area including playable area and margin around it
+	var playable_area: Rect2i ## playble area can spawn destructive tiles and resources
+	var no_generation_zones: Array[Rect2i] = [] ## zones in which nothing will be generated
+	var no_bounds_zones: Array[Rect2i] = [] ## zones in which bounds will not be spawned
+	

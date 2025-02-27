@@ -662,13 +662,14 @@ frequency = 0.1634
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ibo6x"]
 noise_type = 3
-frequency = 0.057
+frequency = 0.489
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("1_f2k5u")
-bounds_padding = 32
+width = null
+height = null
 
 [node name="BackgroundTML" type="TileMapLayer" parent="Map"]
 modulate = Color(0.109804, 0.164706, 0.380392, 1)
@@ -681,8 +682,8 @@ tile_map_data = PackedByteArray("AADt/wAAAAAIAAAAAADt/wEAAAAIAAEAAADt/wIAAAAIAAE
 tile_set = SubResource("TileSet_v1x37")
 
 [node name="BoundaryTML" type="TileMapLayer" parent="Map"]
-modulate = Color(0.133333, 0.133333, 0.133333, 1)
-tile_map_data = PackedByteArray("AADt/wAAAAALAAAAAADt/wEAAAALAAMAAADs/wEAAAAGAAIAAADs/wIAAAALAAIAAADs/wMAAAALAAIAAADs/wQAAAALAAIAAADs/wUAAAALAAIAAADs/wYAAAAGAAEAAADs/wcAAAAJAAIAAADs/wgAAAAGAAIAAADs/wkAAAALAAIAAADs/woAAAALAAIAAADs/wsAAAALAAIAAADs/wwAAAALAAIAAADs/w0AAAALAAIAAADs/w4AAAALAAIAAADs/w8AAAALAAIAAADs/xAAAAALAAIAAADs/xEAAAALAAMAAADr/xEAAAAIAAMAAADr/xAAAAAIAAEAAADr/w8AAAAIAAEAAADr/w4AAAAIAAEAAADr/w0AAAAIAAEAAADr/wwAAAAIAAEAAADr/wsAAAAIAAEAAADr/woAAAAIAAEAAADr/wkAAAAIAAEAAADr/wgAAAAIAAEAAADr/wcAAAAIAAEAAADr/wYAAAAIAAEAAADr/wUAAAAIAAEAAADr/wQAAAAIAAEAAADr/wMAAAAIAAEAAADr/wIAAAAIAAEAAADr/wEAAAAIAAEAAADr/wAAAAAIAAAAAADs/wAAAAAKAAAAAADt/wgAAAAJAAMAAADu/wgAAAAJAAMAAADv/wgAAAAJAAMAAADw/wgAAAAJAAMAAADx/wgAAAAJAAMAAADy/wgAAAALAAMAAADx/wcAAAAJAAIAAADw/wcAAAAJAAIAAADv/wYAAAAKAAAAAADu/wYAAAAKAAAAAADt/wYAAAAKAAAAAADt/wcAAAAJAAIAAADu/wcAAAAJAAIAAADv/wcAAAAJAAIAAADw/wYAAAAKAAAAAADy/wcAAAALAAIAAADy/wYAAAALAAAAAADx/wYAAAAKAAAAAAA=")
+self_modulate = Color(0.169245, 0.169245, 0.169245, 1)
+tile_map_data = PackedByteArray("AADt/wAAAAALAAAAAADt/wEAAAALAAMAAADs/wEAAAAGAAIAAADs/wIAAAALAAIAAADs/wMAAAALAAIAAADs/wQAAAALAAIAAADs/wUAAAALAAIAAADs/wYAAAALAAIAAADs/wcAAAALAAIAAADs/wgAAAALAAIAAADs/wkAAAALAAIAAADs/woAAAALAAIAAADs/wsAAAALAAIAAADs/wwAAAALAAIAAADs/w0AAAALAAIAAADs/w4AAAALAAIAAADs/w8AAAALAAIAAADs/xAAAAALAAIAAADs/xEAAAALAAMAAADr/xEAAAAIAAMAAADr/xAAAAAIAAEAAADr/w8AAAAIAAEAAADr/w4AAAAIAAEAAADr/w0AAAAIAAEAAADr/wwAAAAIAAEAAADr/wsAAAAIAAEAAADr/woAAAAIAAEAAADr/wkAAAAIAAEAAADr/wgAAAAIAAEAAADr/wcAAAAIAAEAAADr/wYAAAAIAAEAAADr/wUAAAAIAAEAAADr/wQAAAAIAAEAAADr/wMAAAAIAAEAAADr/wIAAAAIAAEAAADr/wEAAAAIAAEAAADr/wAAAAAIAAAAAADs/wAAAAAKAAAAAAA=")
 tile_set = SubResource("TileSet_v1x37")
 
 [node name="HiddenResourcesTML" type="TileMapLayer" parent="Map"]
@@ -709,13 +710,16 @@ bounds_fluctuation = 10.0
 [node name="Player" parent="." instance=ExtResource("10_b1pgp")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 blend_mode = 1
 
 [node name="WaterShader" parent="." instance=ExtResource("6_gfm1a")]
+visible = false
 position = Vector2(-596, 127)
 scale = Vector2(10, 10)
 
 [node name="WaterShader2" parent="." instance=ExtResource("6_gfm1a")]
+visible = false
 position = Vector2(684, 127)
 scale = Vector2(10, 10)
 
