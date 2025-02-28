@@ -67,7 +67,9 @@ func generate():
 	print("full generation took: " + str(Time.get_unix_time_from_system() - time))
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_btn"):
+	if not OS.is_debug_build():
+		return
+	if event.is_action_pressed("debug_regenerate"):
 		generate()
 
 func _reveal_resources_initially():

@@ -1,5 +1,6 @@
 class_name Movement extends Node2D
 
+var control_enabled = true ## if disabled, player inputs will be ignored
 # Max forward speed
 @export var forward_speed = 250.0 # px/s
 var recoil = -150.0 # px/s backward
@@ -11,7 +12,7 @@ var minimum_turning_speed_percent = 0.1 # percent of max speed that player will 
 var _current_forward_speed = 0.0 # px/s
 
 func calculate_forward_velocity(delta: float) -> float:
-	var target_speed = forward_speed if Input.is_action_pressed("Accelerate") else 0.0
+	var target_speed = forward_speed if _is_accelerating() else 0.0
 	_current_forward_speed = lerpf(_current_forward_speed, target_speed, 1 - acceleration ** delta)
 	return _current_forward_speed
 
@@ -21,6 +22,9 @@ func calculate_rotation(old_rotation: float, delta: float) -> float:
 	var max_rotation_change = turning_speed * multi * delta
 	var rotation_change = clampf(rotation_difference, -max_rotation_change, max_rotation_change)
 	return old_rotation + rotation_change
+
+func _is_accelerating() -> bool:
+	return control_enabled and Input.is_action_pressed("Accelerate")
 
 func _target_rotation() -> float:
 	return (get_global_mouse_position() - global_position).angle()

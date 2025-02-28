@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlg26rb6gd6m"]
+
+[ext_resource type="Script" path="res://player/debug_player.gd" id="1_8vfee"]
+
+[node name="DebugPlayer" type="Node2D"]
+visible = false
+script = ExtResource("1_8vfee")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
