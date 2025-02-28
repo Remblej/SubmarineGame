@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://6xfka7adqenl"]
+
+[ext_resource type="Script" path="res://map/audio_manager.gd" id="1_5178v"]
+[ext_resource type="AudioStream" uid="uid://cmhgwgfbaj1w6" path="res://assets/sfx/hit1.mp3" id="2_0kvwn"]
+[ext_resource type="AudioStream" uid="uid://dhhft53yqxfdy" path="res://assets/sfx/destroy1.mp3" id="3_8ouiw"]
+[ext_resource type="AudioStream" uid="uid://cfveo0br1qv1d" path="res://assets/music/One Man Symphony - Collateral Damage (Free) - 06 Exploration Theme 01.mp3" id="4_1lg0w"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_5178v")
+default_hit_sfx = ExtResource("2_0kvwn")
+default_destroy_sfx = ExtResource("3_8ouiw")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ResourceHitPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DestroyPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ResourceDestroyPlayer" type="AudioStreamPlayer2D" parent="."]
+pitch_scale = 1.5
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1lg0w")
+volume_db = -8.0
+autoplay = true

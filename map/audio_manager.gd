@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @export var default_hit_sfx: AudioStream
 @export var default_destroy_sfx: AudioStream

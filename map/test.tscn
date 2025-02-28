@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=66 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="Texture2D" uid="uid://ckgtpxymrmbhh" path="res://assets/graphics/tileset_debug.png" id="5_63qgv"]
@@ -7,13 +7,9 @@
 [ext_resource type="Script" path="res://map/map_generator.gd" id="7_11icf"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/graphics/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/graphics/tileset_bg.png" id="8_rqics"]
-[ext_resource type="Script" path="res://map/audio_manager.gd" id="8_ubxwf"]
-[ext_resource type="AudioStream" uid="uid://cmhgwgfbaj1w6" path="res://assets/sfx/hit1.mp3" id="9_875cn"]
 [ext_resource type="PackedScene" uid="uid://dlg26rb6gd6m" path="res://player/debug_player.tscn" id="9_m2e55"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/graphics/tileset_resources.png" id="9_tglud"]
 [ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/player.tscn" id="10_b1pgp"]
-[ext_resource type="AudioStream" uid="uid://dhhft53yqxfdy" path="res://assets/sfx/destroy1.mp3" id="10_yal1r"]
-[ext_resource type="AudioStream" uid="uid://cfveo0br1qv1d" path="res://assets/music/One Man Symphony - Collateral Damage (Free) - 06 Exploration Theme 01.mp3" id="11_b86c5"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0tpdm"]
 polygon = PackedVector2Array(12, -20, 20, -12, 20, 32, -20, 32, -20, -12, -12, -20)
@@ -721,22 +717,3 @@ scale = Vector2(10, 10)
 [node name="WaterShader2" parent="." instance=ExtResource("6_gfm1a")]
 position = Vector2(684, 127)
 scale = Vector2(10, 10)
-
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("8_ubxwf")
-default_hit_sfx = ExtResource("9_875cn")
-default_destroy_sfx = ExtResource("10_yal1r")
-
-[node name="HitPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
-
-[node name="ResourceHitPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
-
-[node name="DestroyPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
-
-[node name="ResourceDestroyPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
-pitch_scale = 1.5
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioManager"]
-stream = ExtResource("11_b86c5")
-volume_db = -8.0
-autoplay = true
