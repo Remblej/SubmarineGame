@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=18 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://n8yi1i5dcmb3" path="res://assets/graphics/submarine.png" id="2_m8vb3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://player/hull.gd" id="8_ni4xl"]
 [ext_resource type="PackedScene" uid="uid://cs7ow1e3s5aym" path="res://ui/upgrades_ui/upgrades_panel.tscn" id="10_7ktq7"]
 [ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/graphics/tex_cone.png" id="11_an1ft"]
+[ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://util/water_effect.tscn" id="11_fyrmu"]
 [ext_resource type="PackedScene" uid="uid://6xfka7adqenl" path="res://util/audio_manager.tscn" id="12_1x81y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
@@ -73,6 +74,8 @@ floating_text_scene = ExtResource("7_a4myd")
 script = ExtResource("8_ni4xl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WaterShader" parent="CanvasLayer" instance=ExtResource("11_fyrmu")]
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("4_0tymi")]
 

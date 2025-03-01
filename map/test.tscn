@@ -1,9 +1,8 @@
-[gd_scene load_steps=66 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=65 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="Texture2D" uid="uid://ckgtpxymrmbhh" path="res://assets/graphics/tileset_debug.png" id="5_63qgv"]
 [ext_resource type="PackedScene" uid="uid://c4noh2qbau26y" path="res://base/base.tscn" id="5_jdixt"]
-[ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://util/water_effect.tscn" id="6_gfm1a"]
 [ext_resource type="Script" path="res://map/map_generator.gd" id="7_11icf"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/graphics/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/graphics/tileset_bg.png" id="8_rqics"]
@@ -709,11 +708,3 @@ bounds_fluctuation = 10.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
-
-[node name="WaterShader" parent="." instance=ExtResource("6_gfm1a")]
-position = Vector2(-596, 127)
-scale = Vector2(10, 10)
-
-[node name="WaterShader2" parent="." instance=ExtResource("6_gfm1a")]
-position = Vector2(684, 127)
-scale = Vector2(10, 10)
