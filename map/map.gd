@@ -49,7 +49,7 @@ func _resource_at(coords: Vector2i) -> GatherableResource:
 	if data:
 		var r_id = data.get_custom_data("resource_id") as int
 		if r_id:
-			return Globals.resource_by_id.get(r_id, null)
+			return Resources.by_id.get(r_id, null)
 	return null
 	
 func generate():

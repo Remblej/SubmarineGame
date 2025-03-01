@@ -20,7 +20,7 @@ func _ready() -> void:
 func update_ui():
 	if resource:
 		if label:
-			label.text = resource.name
+			label.text = resource.get_effective_name()
 		if texture_rect:
 			texture_rect.texture = resource.icon
 	modulate.v = 1 if selected else .5

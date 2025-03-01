@@ -17,6 +17,8 @@ func calculate_forward_velocity(delta: float) -> float:
 	return _current_forward_speed
 
 func calculate_rotation(old_rotation: float, delta: float) -> float:
+	if not control_enabled:
+		return 0
 	var rotation_difference = wrapf(_target_rotation() - old_rotation, -PI, PI)
 	var multi = clampf(abs(rotation_difference) / angle_difference_for_max_turning_speed, minimum_turning_speed_percent, 1.0)
 	var max_rotation_change = turning_speed * multi * delta

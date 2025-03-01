@@ -1,11 +1,10 @@
 extends Control
 
+@onready var embark_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/EmbarkButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	embark_button.pressed.connect(_on_embark_pressed)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_embark_pressed():
+	Globals.embark.emit()

@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_resource_drilled(resource: GatherableResource):
 	if try_add(resource):
-		_spawn_floating_text("+1 " + resource.name, resource.color)
+		_spawn_floating_text("+1 " + resource.get_effective_name(), resource.color)
 	else:
 		_spawn_floating_text("No cargo space!", Color.RED)
 

@@ -1,8 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://5q8cgtlh0hmn"]
+[gd_scene load_steps=2 format=3 uid="uid://5q8cgtlh0hmn"]
 
 [ext_resource type="Script" path="res://util/globals.gd" id="1_sy883"]
-[ext_resource type="Resource" uid="uid://dociumj4s3vpk" path="res://resources/all_resources.tres" id="2_ccohd"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_sy883")
-all_resources = ExtResource("2_ccohd")

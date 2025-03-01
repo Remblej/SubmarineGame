@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3l852vwott67"]
+[gd_scene load_steps=6 format=3 uid="uid://d3l852vwott67"]
 
 [ext_resource type="Script" path="res://ui/upgrades_ui/research_panel.gd" id="1_ah4ld"]
 [ext_resource type="Theme" uid="uid://bna4ktuogxibk" path="res://ui/panel_theme_sharp_dark.tres" id="1_x62s4"]
 [ext_resource type="PackedScene" uid="uid://ded5uildb1nb5" path="res://ui/upgrades_ui/resource_research_button.tscn" id="2_am4et"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="4_vil55"]
+[ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="5_jd0ws"]
 
 [node name="ResearchPanel" type="HBoxContainer"]
 anchors_preset = 15
@@ -35,10 +36,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Panel2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+layout_mode = 2
+
+[node name="ResearchLabel" type="Label" parent="Panel2/VBoxContainer"]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 text = "todo"
 label_settings = ExtResource("4_vil55")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ResearchButton" type="Button" parent="Panel2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_jd0ws")
+text = "Research"

@@ -17,3 +17,6 @@ class_name GatherableResource extends Resource
 @export var min_cluster_size: int
 @export var max_cluster_size: int
 @export var cluster_size_probability: Curve 
+
+func get_effective_name() -> String:
+	return name if self in Resources.researched else "?"
