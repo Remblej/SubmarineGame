@@ -76,10 +76,10 @@ func grow_cluster(resource: GatherableResource, center: Vector2i, terrain_tml: T
 	var cluster_size = 1
 	var target_size = lerp(resource.min_cluster_size, resource.max_cluster_size, resource.cluster_size_probability.sample(randf()))
 	var directions = [Vector2i(-1,0), Vector2i(1,0), Vector2i(0,-1), Vector2i(0,1)]
-	directions.shuffle()
 
 	while cluster_size < target_size and frontier.size() > 0:
-		var current = frontier.pop_back()
+		var current = frontier.pick_random()
+		frontier.erase(current)
 		for offset in directions:
 			var neighbor = current + offset
 			if neighbor in visited:
@@ -89,7 +89,7 @@ func grow_cluster(resource: GatherableResource, center: Vector2i, terrain_tml: T
 			if terrain_tml.get_cell_source_id(neighbor) == -1:
 				continue
 			# Optional: add a probability check to make growth irregular
-			if randf() < .8:
+			if randf() < .6:
 				_set_resource_tile(resource, neighbor, resource_tml)
 				frontier.append(neighbor)
 				cluster_size += 1
