@@ -12,7 +12,9 @@ signal battery_energy_changed(current_level: float, capacity: float)
 signal battery_depleted
 signal battery_fully_charged
 signal velocity_changed(velocity: Vector2)
+signal entering_base(player: Player)
 signal entered_base(player: Player)
+signal exiting_base(player: Player)
 signal exited_base(player: Player)
 signal embark()
 signal resource_researched(resource: GatherableResource)

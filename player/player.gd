@@ -12,7 +12,9 @@ var _depth: int
 
 func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
+	Globals.entering_base.connect(_on_entering_base)
 	Globals.entered_base.connect(_on_entered_base)
+	Globals.exiting_base.connect(_on_exiting_base)
 	Globals.exited_base.connect(_on_exited_base)
 	var drill_tween = get_tree().create_tween()
 	drill_tween.set_loops()
@@ -37,12 +39,16 @@ func _physics_process(delta: float) -> void:
 func _on_drill_hit(tile: RID, drill_damage: int):
 	movement.apply_recoil()
 	
-func _on_entered_base(player: Player):
+func _on_entering_base(player: Player):
 	hud.visible = false
-	upgrades_panel.visible = true
 	movement.control_enabled = false
+
+func _on_entered_base(player: Player):
+	upgrades_panel.visible = true
+
+func _on_exiting_base(player: Player):
+	upgrades_panel.visible = false
 
 func _on_exited_base(player: Player):
 	hud.visible = true
-	upgrades_panel.visible = false
 	movement.control_enabled = true
