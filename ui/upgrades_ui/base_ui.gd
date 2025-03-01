@@ -1,6 +1,6 @@
 extends Control
 
-@onready var embark_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/EmbarkButton
+@onready var embark_button: Button = %EmbarkButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

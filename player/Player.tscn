@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://player/battery.gd" id="7_w8jxh"]
 [ext_resource type="Script" path="res://player/cargo.gd" id="7_ywc2t"]
 [ext_resource type="Script" path="res://player/hull.gd" id="8_ni4xl"]
-[ext_resource type="PackedScene" uid="uid://cs7ow1e3s5aym" path="res://ui/upgrades_ui/upgrades_panel.tscn" id="10_7ktq7"]
+[ext_resource type="PackedScene" uid="uid://cs7ow1e3s5aym" path="res://ui/upgrades_ui/base_ui.tscn" id="10_7ktq7"]
 [ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/graphics/tex_cone.png" id="11_an1ft"]
 [ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://util/water_effect.tscn" id="11_fyrmu"]
 [ext_resource type="PackedScene" uid="uid://6xfka7adqenl" path="res://util/audio_manager.tscn" id="12_1x81y"]
