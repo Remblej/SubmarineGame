@@ -665,6 +665,7 @@ frequency = 0.057
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(1.05, 1.05)
@@ -728,3 +729,4 @@ bounds_fluctuation = 10.0
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
+range_layer_min = -1

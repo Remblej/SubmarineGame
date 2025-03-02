@@ -24,7 +24,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DockingArea"]
 position = Vector2(0, 229.5)
 shape = SubResource("RectangleShape2D_piqk5")
-disabled = true
 
 [node name="Storage" type="Node" parent="."]
 script = ExtResource("3_8e73m")
