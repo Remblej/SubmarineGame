@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cki3g5x1vipfo"]
+
+[ext_resource type="Texture2D" uid="uid://bum41lvakrfbu" path="res://assets/graphics/bubble.png" id="1_mx4tf"]
+[ext_resource type="Script" path="res://util/vfx_explosion_bubbles.gd" id="2_xc1l4"]
+
+[node name="VfxExplosionBubbles" type="CPUParticles2D"]
+emitting = false
+amount = 20
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.2
+texture = ExtResource("1_mx4tf")
+emission_shape = 3
+emission_rect_extents = Vector2(32, 32)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, -60)
+initial_velocity_min = 40.0
+initial_velocity_max = 70.0
+damping_min = 40.0
+damping_max = 40.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+script = ExtResource("2_xc1l4")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=67 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=68 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="Texture2D" uid="uid://dwc1bgi1r2rxu" path="res://assets/background.png" id="1_no7ab"]
 [ext_resource type="Texture2D" uid="uid://dfyiqicb1e3co" path="res://assets/background_motes.png" id="2_i5mr6"]
+[ext_resource type="PackedScene" uid="uid://cki3g5x1vipfo" path="res://util/vfx_explosion_bubbles.tscn" id="4_jftmf"]
 [ext_resource type="Texture2D" uid="uid://ckgtpxymrmbhh" path="res://assets/graphics/tileset_debug.png" id="5_63qgv"]
 [ext_resource type="PackedScene" uid="uid://c4noh2qbau26y" path="res://base/base.tscn" id="5_jdixt"]
 [ext_resource type="Script" path="res://map/map_generator.gd" id="7_11icf"]
@@ -686,6 +687,7 @@ texture = ExtResource("2_i5mr6")
 script = ExtResource("1_f2k5u")
 bounds_padding = 32
 base_tunnel_width = 2
+tile_break_vfx = ExtResource("4_jftmf")
 
 [node name="BackgroundTML" type="TileMapLayer" parent="Map"]
 visible = false

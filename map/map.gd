@@ -4,6 +4,7 @@ extends Node2D
 @export var height = 64
 @export var bounds_padding = 16
 @export var base_tunnel_width = 4
+@export var tile_break_vfx: PackedScene
 
 @onready var background_tml: TileMapLayer = $BackgroundTML
 @onready var terrain_tml: TileMapLayer = $TerrainTML
@@ -33,6 +34,10 @@ func _on_drill_hit(tile: RID, drill_damage: int):
 		terrain_tml.set_cells_terrain_connect([coords], 0, -1, true)
 		Globals.tile_destroyed.emit(r)
 		_reveal_resources_after_dig(coords)
+		var vfx = tile_break_vfx.instantiate() as CPUParticles2D
+		add_child(vfx)
+		vfx.global_position = terrain_tml.to_global(terrain_tml.map_to_local(coords))
+		vfx.emitting = true
 		#_reveal_resources_at(terrain_tml.get_surrounding_cells(coords))
 		if r:
 			resources_tml.erase_cell(coords)
