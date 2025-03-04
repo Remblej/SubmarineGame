@@ -35,7 +35,7 @@ func spawn_terrain(settings: MapGenerationSettings, terrain_tml: TileMapLayer, b
 
 func spawn_resources(width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
 	var time = Time.get_unix_time_from_system()
-	for r in Resources.all.resources:
+	for r in Resources.all:
 		_spawn_resource(r, width, height, terrain_tml, resource_tml)
 	print("resources generated in: " + str(Time.get_unix_time_from_system() - time))
 		

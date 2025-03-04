@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://util/globals.tscn"
-Resources="*res://util/resources.tscn"
+Resources="*res://resources/resources.tscn"
+Upgrades="*res://upgrades/upgrades.tscn"
 
 [display]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt2tt5buo141v"]
 
-[ext_resource type="Shader" path="res://util/water_shader.gdshader" id="1_twkcm"]
-[ext_resource type="Script" path="res://util/water_effect.gd" id="2_8glh7"]
+[ext_resource type="Shader" path="res://vfx/water_shader.gdshader" id="1_twkcm"]
+[ext_resource type="Script" path="res://vfx/water_effect.gd" id="2_8glh7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b0dk7"]
 fractal_type = 2

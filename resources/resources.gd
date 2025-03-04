@@ -1,12 +1,12 @@
 extends Node
 
-@export var all: GatherableResources
+@export var all: Array[GatherableResource]
 var by_id: Dictionary # [resource_id: int, GatherableResource]
 var seen: Array[GatherableResource]
 var researched: Array[GatherableResource]
 
 func _ready() -> void:
-	for r in all.resources:
+	for r in all:
 		by_id[r.id] = r
 	Globals.resource_drilled.connect(_on_resource_drilled)
 	Globals.resource_researched.connect(_on_resource_researched)

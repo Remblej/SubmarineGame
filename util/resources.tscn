@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxy7bdtgmxchr"]
-
-[ext_resource type="Script" path="res://util/resources.gd" id="1_gjbgb"]
-[ext_resource type="Resource" uid="uid://dociumj4s3vpk" path="res://resources/all_resources.tres" id="2_o6j0n"]
-
-[node name="Resources" type="Node"]
-script = ExtResource("1_gjbgb")
-all = ExtResource("2_o6j0n")
