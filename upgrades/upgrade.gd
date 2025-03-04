@@ -1,6 +1,6 @@
 class_name Upgrade extends Resource
 
-var id: int
-var name: String
-var category: Upgrades.Category
-var cost: Dictionary # [resource_id: int, amount: int]
+@export var id: Upgrades.Id
+@export var name: String
+@export var category: Upgrades.Category
+@export var cost: Dictionary # [resource_id: int, amount: int]

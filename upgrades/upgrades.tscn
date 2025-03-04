@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://vrtxpppj0w3v"]
+[gd_scene load_steps=4 format=3 uid="uid://vrtxpppj0w3v"]
 
 [ext_resource type="Script" path="res://upgrades/upgrades.gd" id="1_kk0uq"]
+[ext_resource type="Script" path="res://upgrades/upgrade.gd" id="2_7alhm"]
+
+[sub_resource type="Resource" id="Resource_g3yvl"]
+script = ExtResource("2_7alhm")
+id = 0
+name = "Drill Power I"
+category = 0
+cost = {}
 
 [node name="Upgrades" type="Node"]
 script = ExtResource("1_kk0uq")
+all = Array[ExtResource("2_7alhm")]([SubResource("Resource_g3yvl")])

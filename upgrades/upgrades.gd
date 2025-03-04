@@ -1,5 +1,6 @@
 extends Node
 
+enum Id { DRILL_POWER_I, DRILL_POWER_II }
 enum Category { DRILL, ENGINE }
 
 @export var all: Array[Upgrade]
