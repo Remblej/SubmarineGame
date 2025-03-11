@@ -6,4 +6,4 @@ enum Category { DRILL, ENGINE }
 @export var id: Id
 @export var name: String
 @export var category: Category
-@export var cost: Dictionary[int, int] # [resource_id: int, amount: int]
+@export var cost: Dictionary[GatherableResource.Id, int]

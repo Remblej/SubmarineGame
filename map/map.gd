@@ -14,7 +14,6 @@ extends Node2D
 @onready var map_generator: MapGenerator = $MapGenerator
 
 var default_terrain_hit_points = 2 # todo based on depth / biome
-var resource_hit_points: Dictionary = {} # [resource_id: int, hit_points: int]
 var _tile_damage: Dictionary = {} # [Vector2i, int] # TODO clean to avoid memory leak
 var _explored_tiles: Array[Vector2i] = []
 
@@ -52,8 +51,8 @@ func _get_hit_points(coords: Vector2i) -> int:
 func _resource_at(coords: Vector2i) -> GatherableResource:
 	var data = resources_tml.get_cell_tile_data(coords)
 	if data:
-		var r_id = data.get_custom_data("resource_id") as int
-		if r_id:
+		var r_id = data.get_custom_data("resource_id") as GatherableResource.Id
+		if r_id != null:
 			return Resources.by_id.get(r_id, null)
 	return null
 	

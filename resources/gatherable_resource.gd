@@ -1,6 +1,8 @@
 class_name GatherableResource extends Resource
 
-@export var id: int
+enum Id { GOLD, IRON, COPPER, DIAMOND }
+
+@export var id: Id
 @export var name: String
 @export var hit_points: int
 @export var color: Color

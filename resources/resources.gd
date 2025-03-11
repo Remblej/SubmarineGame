@@ -1,7 +1,7 @@
 extends Node
 
 @export var all: Array[GatherableResource]
-var by_id: Dictionary # [resource_id: int, GatherableResource]
+var by_id: Dictionary[GatherableResource.Id, GatherableResource]
 var seen: Array[GatherableResource]
 var researched: Array[GatherableResource]
 
