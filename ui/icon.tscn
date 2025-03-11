@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp6cvvvb824pg"]
 
-[ext_resource type="Script" path="res://ui/icon.gd" id="1_mn1vp"]
+[ext_resource type="Script" uid="uid://cyteuh3jwwwul" path="res://ui/icon.gd" id="1_mn1vp"]
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="2_df247"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/graphics/tileset_resources.png" id="3_j638m"]
 

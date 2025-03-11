@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dy811hj1i6eel"]
 
-[ext_resource type="Script" path="res://ui/max_depth_panel.gd" id="1_5lnwu"]
+[ext_resource type="Script" uid="uid://dxcrpj8npgufc" path="res://ui/max_depth_panel.gd" id="1_5lnwu"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="2_xprcu"]
 
 [node name="MaxDepthPanel" type="VBoxContainer"]

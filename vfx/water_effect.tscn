@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt2tt5buo141v"]
 
-[ext_resource type="Shader" path="res://vfx/water_shader.gdshader" id="1_twkcm"]
-[ext_resource type="Script" path="res://vfx/water_effect.gd" id="2_8glh7"]
+[ext_resource type="Shader" uid="uid://r68bj7isv3e1" path="res://vfx/water_shader.gdshader" id="1_twkcm"]
+[ext_resource type="Script" uid="uid://blp2d38iowakp" path="res://vfx/water_effect.gd" id="2_8glh7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b0dk7"]
 fractal_type = 2
@@ -14,11 +14,11 @@ noise = SubResource("FastNoiseLite_b0dk7")
 shader = ExtResource("1_twkcm")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/color_strength = 0.2
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_bw60y")
 shader_parameter/speed = Vector2(0.06, 0.02)
 shader_parameter/wave_strength = 0.5
 shader_parameter/displacement = Vector2(0, 0)
 shader_parameter/scale = Vector2(1, 1)
-shader_parameter/fast_noise = SubResource("NoiseTexture2D_bw60y")
 
 [node name="WaterShader" type="ColorRect"]
 material = SubResource("ShaderMaterial_ekqoq")

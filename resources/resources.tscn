@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cxy7bdtgmxchr"]
 
-[ext_resource type="Script" path="res://resources/resources.gd" id="1_gjbgb"]
-[ext_resource type="Script" path="res://resources/gatherable_resource.gd" id="2_pwirf"]
+[ext_resource type="Script" uid="uid://iibd4pirby34" path="res://resources/resources.gd" id="1_gjbgb"]
+[ext_resource type="Script" uid="uid://bv75ygxfnwv6u" path="res://resources/gatherable_resource.gd" id="2_pwirf"]
 [ext_resource type="AudioStream" uid="uid://bys88lyc6w30l" path="res://assets/sfx/metal-hit-73-193332.mp3" id="3_rigfx"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/graphics/tileset_resources.png" id="4_1u6ie"]
 [ext_resource type="AudioStream" uid="uid://ddhmfc0y80f03" path="res://assets/sfx/metal-hit-25-193291.mp3" id="5_mifb2"]

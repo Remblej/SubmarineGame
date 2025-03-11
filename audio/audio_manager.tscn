@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://6xfka7adqenl"]
 
-[ext_resource type="Script" path="res://map/audio_manager.gd" id="1_3kg6r"]
+[ext_resource type="Script" uid="uid://dmehf37ylflbh" path="res://map/audio_manager.gd" id="1_3kg6r"]
 [ext_resource type="AudioStream" uid="uid://cmhgwgfbaj1w6" path="res://assets/sfx/hit1.mp3" id="2_ttl5e"]
 [ext_resource type="AudioStream" uid="uid://dhhft53yqxfdy" path="res://assets/sfx/destroy1.mp3" id="3_e3fwa"]
 [ext_resource type="AudioStream" uid="uid://cfveo0br1qv1d" path="res://assets/music/One Man Symphony - Collateral Damage (Free) - 06 Exploration Theme 01.mp3" id="4_fcu6f"]

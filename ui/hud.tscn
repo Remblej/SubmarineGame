@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2gwxiu7kkwvs"]
 
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_50qix"]
-[ext_resource type="Script" path="res://ui/hud.gd" id="1_ejcmk"]
+[ext_resource type="Script" uid="uid://c811e1umpd83j" path="res://ui/hud.gd" id="1_ejcmk"]
 [ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="4_esiww"]
 [ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="5_c6ghm"]
 [ext_resource type="PackedScene" uid="uid://bxldv71jn67ij" path="res://ui/depth_panel.tscn" id="6_bxbel"]

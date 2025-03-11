@@ -1,6 +1,9 @@
 class_name Upgrade extends Resource
 
-@export var id: Upgrades.Id
+enum Id { DRILL_POWER_I, DRILL_POWER_II }
+enum Category { DRILL, ENGINE }
+
+@export var id: Id
 @export var name: String
-@export var category: Upgrades.Category
-@export var cost: Dictionary # [resource_id: int, amount: int]
+@export var category: Category
+@export var cost: Dictionary[int, int] # [resource_id: int, amount: int]

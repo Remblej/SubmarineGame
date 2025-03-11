@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://boamtoojltmb0"]
 
-[ext_resource type="Script" path="res://ui/cargo_panel.gd" id="1_jnslg"]
+[ext_resource type="Script" uid="uid://bnfu0ki10wpwr" path="res://ui/cargo_panel.gd" id="1_jnslg"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="1_mhxdn"]
 [ext_resource type="PackedScene" uid="uid://bp6cvvvb824pg" path="res://ui/icon.tscn" id="2_f8jc2"]
 

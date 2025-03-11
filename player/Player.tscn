@@ -1,22 +1,22 @@
 [gd_scene load_steps=25 format=3 uid="uid://ckgaf5gu5p2qj"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_46rre"]
+[ext_resource type="Script" uid="uid://b7od04d8mfv4y" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://n8yi1i5dcmb3" path="res://assets/graphics/submarine.png" id="2_m8vb3"]
-[ext_resource type="Script" path="res://player/movement.gd" id="3_r68kt"]
+[ext_resource type="Script" uid="uid://bcc3wqsqw46ft" path="res://player/movement.gd" id="3_r68kt"]
 [ext_resource type="Texture2D" uid="uid://c0qlf7aldmabo" path="res://assets/graphics/submarine_drill.png" id="3_vqspx"]
 [ext_resource type="PackedScene" uid="uid://c2gwxiu7kkwvs" path="res://ui/hud.tscn" id="4_0tymi"]
 [ext_resource type="Texture2D" uid="uid://ceynaar1yaj5k" path="res://assets/graphics/submarine_drill_cover.png" id="4_5ftf3"]
-[ext_resource type="Script" path="res://player/drill.gd" id="4_ydsbw"]
+[ext_resource type="Script" uid="uid://psfdk3y2xulp" path="res://player/drill.gd" id="4_ydsbw"]
 [ext_resource type="PackedScene" uid="uid://b06wmn8duihqk" path="res://ui/floating_text.tscn" id="7_a4myd"]
-[ext_resource type="Script" path="res://player/battery.gd" id="7_w8jxh"]
-[ext_resource type="Script" path="res://player/cargo.gd" id="7_ywc2t"]
-[ext_resource type="Script" path="res://player/hull.gd" id="8_ni4xl"]
+[ext_resource type="Script" uid="uid://ckyyci12wrgwg" path="res://player/battery.gd" id="7_w8jxh"]
+[ext_resource type="Script" uid="uid://c5v3inwj8nd8r" path="res://player/cargo.gd" id="7_ywc2t"]
+[ext_resource type="Script" uid="uid://b1f722lwyk40a" path="res://player/hull.gd" id="8_ni4xl"]
 [ext_resource type="PackedScene" uid="uid://cs7ow1e3s5aym" path="res://ui/upgrades_ui/base_ui.tscn" id="10_7ktq7"]
 [ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/graphics/tex_cone.png" id="11_an1ft"]
 [ext_resource type="PackedScene" uid="uid://dt2tt5buo141v" path="res://vfx/water_effect.tscn" id="11_fyrmu"]
 [ext_resource type="PackedScene" uid="uid://6xfka7adqenl" path="res://audio/audio_manager.tscn" id="12_1x81y"]
-[ext_resource type="Shader" path="res://vfx/cracked_glass.gdshader" id="12_05cob"]
-[ext_resource type="Shader" path="res://vfx/crt.gdshader" id="12_aw4ju"]
+[ext_resource type="Shader" uid="uid://dy7oml3qjfhvv" path="res://vfx/cracked_glass.gdshader" id="12_05cob"]
+[ext_resource type="Shader" uid="uid://bv7e322egvu3y" path="res://vfx/crt.gdshader" id="12_aw4ju"]
 [ext_resource type="Texture2D" uid="uid://bum41lvakrfbu" path="res://assets/graphics/bubble.png" id="18_672dq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
@@ -64,9 +64,9 @@ script = ExtResource("1_46rre")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-31.07, 2.775)
 amount = 100
+texture = ExtResource("18_672dq")
 lifetime = 10.0
 lifetime_randomness = 0.2
-texture = ExtResource("18_672dq")
 emission_shape = 3
 emission_rect_extents = Vector2(5, 15)
 direction = Vector2(-1, 0)

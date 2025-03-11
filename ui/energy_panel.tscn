@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4jfjrpgrs0r0"]
 
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="1_4rfyw"]
-[ext_resource type="Script" path="res://ui/energy_panel.gd" id="1_6v1ja"]
+[ext_resource type="Script" uid="uid://macpsrtydwx3" path="res://ui/energy_panel.gd" id="1_6v1ja"]
 
 [node name="EnergyPanel" type="VBoxContainer"]
 script = ExtResource("1_6v1ja")

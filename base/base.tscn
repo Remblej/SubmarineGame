@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4noh2qbau26y"]
 
-[ext_resource type="Script" path="res://base/base.gd" id="1_4w4qf"]
+[ext_resource type="Script" uid="uid://bhgsl0eetnq7c" path="res://base/base.gd" id="1_4w4qf"]
 [ext_resource type="Texture2D" uid="uid://ckuub02jehr8k" path="res://assets/graphics/mothership.png" id="2_uiimd"]
-[ext_resource type="Script" path="res://base/storage.gd" id="3_8e73m"]
+[ext_resource type="Script" uid="uid://dras6lto8o4ug" path="res://base/storage.gd" id="3_8e73m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piqk5"]
 size = Vector2(218, 79)

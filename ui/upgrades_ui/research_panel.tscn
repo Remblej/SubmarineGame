@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3l852vwott67"]
 
-[ext_resource type="Script" path="res://ui/upgrades_ui/research_panel.gd" id="1_ah4ld"]
+[ext_resource type="Script" uid="uid://bimtg5drybg0k" path="res://ui/upgrades_ui/research_panel.gd" id="1_ah4ld"]
 [ext_resource type="Theme" uid="uid://bna4ktuogxibk" path="res://ui/panel_theme_sharp_dark.tres" id="1_x62s4"]
 [ext_resource type="PackedScene" uid="uid://ded5uildb1nb5" path="res://ui/upgrades_ui/resource_research_button.tscn" id="2_am4et"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="4_vil55"]

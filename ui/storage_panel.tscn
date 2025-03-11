@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://btgdkepky5bue"]
 
-[ext_resource type="Script" path="res://ui/storage_panel.gd" id="1_er8gg"]
+[ext_resource type="Script" uid="uid://c20cw68fa2qit" path="res://ui/storage_panel.gd" id="1_er8gg"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="3_20xck"]
 
 [node name="StoragePanel" type="VBoxContainer"]

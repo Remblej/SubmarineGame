@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://cki3g5x1vipfo"]
 
 [ext_resource type="Texture2D" uid="uid://bum41lvakrfbu" path="res://assets/graphics/bubble.png" id="1_mx4tf"]
-[ext_resource type="Script" path="res://vfx/vfx_explosion_bubbles.gd" id="2_xc1l4"]
+[ext_resource type="Script" uid="uid://ctdrmlh8k7wm3" path="res://vfx/vfx_explosion_bubbles.gd" id="2_xc1l4"]
 
 [node name="VfxExplosionBubbles" type="CPUParticles2D"]
 emitting = false
 amount = 20
+texture = ExtResource("1_mx4tf")
 lifetime = 10.0
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.2
-texture = ExtResource("1_mx4tf")
 emission_shape = 3
 emission_rect_extents = Vector2(32, 32)
 particle_flag_align_y = true
