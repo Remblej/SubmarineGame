@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=27 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" uid="uid://b7od04d8mfv4y" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://n8yi1i5dcmb3" path="res://assets/graphics/submarine.png" id="2_m8vb3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ceynaar1yaj5k" path="res://assets/graphics/submarine_drill_cover.png" id="4_5ftf3"]
 [ext_resource type="Script" uid="uid://psfdk3y2xulp" path="res://player/drill.gd" id="4_ydsbw"]
 [ext_resource type="PackedScene" uid="uid://b06wmn8duihqk" path="res://ui/floating_text.tscn" id="7_a4myd"]
+[ext_resource type="Script" uid="uid://c7c7kyp2o2umi" path="res://player/camera_2d.gd" id="7_c35mf"]
 [ext_resource type="Script" uid="uid://ckyyci12wrgwg" path="res://player/battery.gd" id="7_w8jxh"]
 [ext_resource type="Script" uid="uid://c5v3inwj8nd8r" path="res://player/cargo.gd" id="7_ywc2t"]
 [ext_resource type="Script" uid="uid://b1f722lwyk40a" path="res://player/hull.gd" id="8_ni4xl"]
@@ -22,6 +23,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
 radius = 21.0
 height = 80.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c35mf"]
+noise_type = 0
+frequency = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_417eo"]
 radius = 3.895
@@ -106,6 +111,8 @@ shape = SubResource("CapsuleShape2D_yno6g")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 position_smoothing_enabled = true
+script = ExtResource("7_c35mf")
+shake_noise = SubResource("FastNoiseLite_c35mf")
 
 [node name="Drill" type="Area2D" parent="."]
 collision_layer = 0

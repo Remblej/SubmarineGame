@@ -18,6 +18,7 @@ signal exiting_base(player: Player)
 signal exited_base(player: Player)
 signal embark()
 signal resource_researched(resource: GatherableResource)
+signal screen_shake(magnitude: float, speed: float, duration: float)
 
 var max_depth: int = 0
 
