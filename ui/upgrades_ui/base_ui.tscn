@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dy811hj1i6eel" path="res://ui/max_depth_panel.tscn" id="5_yoogl"]
 [ext_resource type="PackedScene" uid="uid://btgdkepky5bue" path="res://ui/storage_panel.tscn" id="6_jkjbb"]
 [ext_resource type="Theme" uid="uid://dkx5687maa13f" path="res://ui/panel_theme_rounded_top_light.tres" id="7_jep8w"]
-[ext_resource type="PackedScene" uid="uid://d3l852vwott67" path="res://ui/upgrades_ui/research_panel.tscn" id="9_cplg5"]
+[ext_resource type="PackedScene" uid="uid://d3l852vwott67" path="res://ui/upgrades_ui/research/research_panel.tscn" id="9_cplg5"]
 
 [node name="BaseUI" type="Control"]
 layout_mode = 3
