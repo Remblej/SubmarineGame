@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw5k8ahsdhndb"]
+
+[ext_resource type="Theme" uid="uid://r3d77byeueak" path="res://ui/panel_theme_rounded_left_light.tres" id="1_e4b5n"]
+[ext_resource type="Script" uid="uid://bko7rka4vmyvj" path="res://ui/upgrades_ui/resource_research_button.gd" id="2_acnh3"]
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="3_sk1ft"]
+[ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="4_ajyb1"]
+
+[node name="ResourceResearchButton" type="Button"]
+custom_minimum_size = Vector2(96, 96)
+offset_right = 96.0
+offset_bottom = 96.0
+size_flags_vertical = 3
+theme = ExtResource("1_e4b5n")
+script = ExtResource("2_acnh3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+mouse_filter = 1
+text = "Name"
+label_settings = ExtResource("3_sk1ft")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("4_ajyb1")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2

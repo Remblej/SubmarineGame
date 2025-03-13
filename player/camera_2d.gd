@@ -21,17 +21,17 @@ func _process(delta: float) -> void:
 	offset = _calc_offset()
 	
 func _on_resource_hit(resource: GatherableResource, destroyed: bool):
-	var mag = 3
+	var mag = 2
 	var speed = 30
 	var dur = .3
 	if destroyed:
-		mag *= 1.2
+		mag *= 1.5
 		dur *= 1.1
 	if resource and destroyed:
 		mag *= 1.3
 		dur *= 1.2
 	_start_shake(mag, speed, dur)
-	
+
 func _start_shake(magnitude: float, speed: float, duration: float):
 	_shake_magnitude = magnitude
 	_shake_speed = speed
