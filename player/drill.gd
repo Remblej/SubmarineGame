@@ -13,9 +13,6 @@ func _ready() -> void:
 	timer.wait_time = cooldown
 	timer.timeout.connect(_on_cooldown_end)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_cooldown_end():
 	set_deferred("monitoring", true)

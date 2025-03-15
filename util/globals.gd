@@ -1,5 +1,16 @@
 extends Node
 
+enum GameState { MAIN_MENU, MOTHERSHIP_UI, UNDOCKING, PLAYING, DOCKING }
+
+var game_state: GameState:
+	set(value):
+		var old = game_state
+		game_state = value
+		game_state_changed.emit(old, game_state)
+
+var max_depth: int = 0
+
+signal game_state_changed(old: GameState, new: GameState)
 signal drill_hit(tile: RID, drill_damage: int)
 signal tile_hit(resource: GatherableResource) # resource is nullable
 signal tile_destroyed(resource: GatherableResource) # resource is nullable
@@ -12,18 +23,12 @@ signal battery_energy_changed(current_level: float, capacity: float)
 signal battery_depleted
 signal battery_fully_charged
 signal velocity_changed(velocity: Vector2)
-signal entering_base(player: Player)
-signal entered_base(player: Player)
-signal exiting_base(player: Player)
-signal exited_base(player: Player)
-signal embark()
 signal resource_researched(resource: GatherableResource)
 signal screen_shake(magnitude: float, speed: float, duration: float)
 
-var max_depth: int = 0
-
 func _ready() -> void:
 	depth_changed.connect(_on_depth_change)
+	game_state = GameState.MAIN_MENU
 
 func _on_depth_change(depth: int):
 	if depth > max_depth:

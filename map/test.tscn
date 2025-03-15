@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dfyiqicb1e3co" path="res://assets/background_motes.png" id="2_i5mr6"]
 [ext_resource type="PackedScene" uid="uid://cki3g5x1vipfo" path="res://vfx/vfx_explosion_bubbles.tscn" id="4_jftmf"]
 [ext_resource type="Texture2D" uid="uid://ckgtpxymrmbhh" path="res://assets/graphics/tileset_debug.png" id="5_63qgv"]
-[ext_resource type="PackedScene" uid="uid://c4noh2qbau26y" path="res://base/base.tscn" id="5_jdixt"]
+[ext_resource type="PackedScene" uid="uid://c4noh2qbau26y" path="res://mothership/mothership.tscn" id="5_jdixt"]
 [ext_resource type="Script" uid="uid://bger1uosglj64" path="res://map/map_generator.gd" id="7_11icf"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/graphics/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/graphics/tileset_bg.png" id="8_rqics"]
@@ -722,6 +722,7 @@ bounds_noise = SubResource("FastNoiseLite_ibo6x")
 bounds_fluctuation = 10.0
 
 [node name="Player" parent="." instance=ExtResource("10_b1pgp")]
+position = Vector2(2, -6)
 
 [node name="DebugPlayer" parent="." instance=ExtResource("9_m2e55")]
 

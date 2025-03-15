@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://dw5k8ahsdhndb"]
 
-[ext_resource type="Script" uid="uid://cmonx5jxh12gn" path="res://ui/upgrades_ui/upgrades/resource_upgrade_tile.gd" id="2_tubk3"]
+[ext_resource type="Script" uid="uid://cmonx5jxh12gn" path="res://ui/mothership/upgrades/resource_upgrade_tile.gd" id="2_tubk3"]
 [ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="3_sk1ft"]
 [ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="4_ajyb1"]
 [ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="4_tubk3"]
 
-[node name="ResourceResearchButton" type="Button"]
+[node name="ResourceUpgradeButton" type="Button"]
 custom_minimum_size = Vector2(96, 96)
 offset_right = 215.0
 offset_bottom = 96.0

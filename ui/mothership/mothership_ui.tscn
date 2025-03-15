@@ -1,23 +1,23 @@
 [gd_scene load_steps=10 format=3 uid="uid://cs7ow1e3s5aym"]
 
-[ext_resource type="Script" uid="uid://cigru7go108ab" path="res://ui/upgrades_ui/base_ui.gd" id="1_2hpni"]
-[ext_resource type="Theme" uid="uid://bna4ktuogxibk" path="res://ui/panel_theme_sharp_dark.tres" id="3_rf0nn"]
-[ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="3_rsevf"]
-[ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="4_ccyhx"]
-[ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="5_epfd6"]
-[ext_resource type="PackedScene" uid="uid://dy811hj1i6eel" path="res://ui/max_depth_panel.tscn" id="5_yoogl"]
-[ext_resource type="PackedScene" uid="uid://btgdkepky5bue" path="res://ui/storage_panel.tscn" id="6_jkjbb"]
-[ext_resource type="Theme" uid="uid://dkx5687maa13f" path="res://ui/panel_theme_rounded_top_light.tres" id="7_jep8w"]
-[ext_resource type="PackedScene" uid="uid://d3l852vwott67" path="res://ui/upgrades_ui/research/research_panel.tscn" id="9_cplg5"]
+[ext_resource type="Script" uid="uid://cigru7go108ab" path="res://ui/mothership/mothership_ui.gd" id="1_2ouxu"]
+[ext_resource type="Theme" uid="uid://bna4ktuogxibk" path="res://ui/panel_theme_sharp_dark.tres" id="2_l0hu3"]
+[ext_resource type="PackedScene" uid="uid://c4jfjrpgrs0r0" path="res://ui/energy_panel.tscn" id="3_ye31i"]
+[ext_resource type="PackedScene" uid="uid://brheh3lrm17vb" path="res://ui/hull_panel.tscn" id="4_wkmws"]
+[ext_resource type="PackedScene" uid="uid://dy811hj1i6eel" path="res://ui/max_depth_panel.tscn" id="5_gmk3x"]
+[ext_resource type="PackedScene" uid="uid://btgdkepky5bue" path="res://ui/storage_panel.tscn" id="6_glyhr"]
+[ext_resource type="Theme" uid="uid://dkx5687maa13f" path="res://ui/panel_theme_rounded_top_light.tres" id="7_5ycuu"]
+[ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="8_srdjt"]
+[ext_resource type="PackedScene" uid="uid://d3l852vwott67" path="res://ui/mothership/research/research_panel.tscn" id="9_r8jrp"]
 
-[node name="BaseUI" type="Control"]
+[node name="MothershipUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2hpni")
+script = ExtResource("1_2ouxu")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_rf0nn")
+theme = ExtResource("2_l0hu3")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -50,19 +50,19 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="EnergyPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("3_rsevf")]
+[node name="EnergyPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("3_ye31i")]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
-[node name="HullPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("4_ccyhx")]
+[node name="HullPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("4_wkmws")]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
-[node name="MaxDepthPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("5_yoogl")]
+[node name="MaxDepthPanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("5_gmk3x")]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 
-[node name="StoragePanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("6_jkjbb")]
+[node name="StoragePanel" parent="Panel/MarginContainer/VBoxContainer/ShipStatusHBoxContainer" instance=ExtResource("6_glyhr")]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
@@ -91,7 +91,7 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("7_jep8w")
+theme = ExtResource("7_5ycuu")
 text = "Research"
 
 [node name="UpgradesButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -100,7 +100,7 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("7_jep8w")
+theme = ExtResource("7_5ycuu")
 text = "Upgrades"
 
 [node name="EmbarkButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -110,13 +110,13 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
-theme = ExtResource("5_epfd6")
+theme = ExtResource("8_srdjt")
 text = "Embark"
 
 [node name="MainPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 460)
 layout_mode = 2
-theme = ExtResource("5_epfd6")
+theme = ExtResource("8_srdjt")
 
-[node name="ResearchPanel" parent="Panel/MarginContainer/VBoxContainer/MainPanel" instance=ExtResource("9_cplg5")]
+[node name="ResearchPanel" parent="Panel/MarginContainer/VBoxContainer/MainPanel" instance=ExtResource("9_r8jrp")]
 layout_mode = 1

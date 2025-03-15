@@ -1,6 +1,6 @@
 class_name Movement extends Node2D
 
-var control_enabled = true ## if disabled, player inputs will be ignored
+var control_enabled = false ## if disabled, player inputs will be ignored
 # Max forward speed
 @export var forward_speed = 250.0 # px/s
 var recoil = -150.0 # px/s backward
@@ -10,6 +10,9 @@ var angle_difference_for_max_turning_speed = TAU/8 # angle in radians; if differ
 var minimum_turning_speed_percent = 0.1 # percent of max speed that player will be turning even if angle difference is low
 
 var _current_forward_speed = 0.0 # px/s
+
+func _ready() -> void:
+	Globals.game_state_changed.connect(func(_old, new): control_enabled = new == Globals.GameState.PLAYING)
 
 func calculate_forward_velocity(delta: float) -> float:
 	var target_speed = forward_speed if _is_accelerating() else 0.0

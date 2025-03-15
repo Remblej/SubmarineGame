@@ -6,20 +6,22 @@ class_name Player extends CharacterBody2D
 @onready var drill: Drill = $Drill
 @onready var cargo: Cargo = $Cargo
 @onready var hud: Hud = $CanvasLayer2/Hud
-@onready var upgrades_panel: Control = $CanvasLayer2/UpgradesPanel
+@onready var mother_ship_ui: Control = $CanvasLayer2/MotherShipUI
+@onready var bubble_vfx: CPUParticles2D = $BubbleVfx
 
+var _states_for_bubble_vfx = [Globals.GameState.PLAYING, Globals.GameState.DOCKING, Globals.GameState.UNDOCKING]
 var _depth: int
+var _drill_tween: Tween
 
 func _ready() -> void:
-	Globals.drill_hit.connect(_on_drill_hit)
-	Globals.entering_base.connect(_on_entering_base)
-	Globals.entered_base.connect(_on_entered_base)
-	Globals.exiting_base.connect(_on_exiting_base)
-	Globals.exited_base.connect(_on_exited_base)
-	var drill_tween = get_tree().create_tween()
-	drill_tween.set_loops()
-	drill_tween.tween_property(drill_sprite, "offset:x", 10, .1)
-	drill_tween.tween_property(drill_sprite, "offset:x", 0, .2)
+	Globals.tile_hit.connect(func (_resource: GatherableResource): movement.apply_recoil())
+	_drill_tween = get_tree().create_tween()
+	_drill_tween.set_loops()
+	_drill_tween.tween_property(drill_sprite, "offset:x", 10, .1)
+	_drill_tween.tween_property(drill_sprite, "offset:x", 0, .2)
+	_drill_tween.pause()
+	bubble_vfx.visible = false
+	Globals.game_state_changed.connect(_on_game_state_changed)
 
 func _process(delta: float) -> void:
 	# depth
@@ -27,8 +29,6 @@ func _process(delta: float) -> void:
 	if _depth != new_depth:
 		Globals.depth_changed.emit(new_depth)
 	_depth = new_depth
-	# drill animation
-	drill_sprite.offset.x = sin(delta*100000) * 100
 
 func _physics_process(delta: float) -> void:
 	rotation = movement.calculate_rotation(rotation,delta)
@@ -36,19 +36,10 @@ func _physics_process(delta: float) -> void:
 	Globals.velocity_changed.emit(velocity)
 	move_and_slide()
 
-func _on_drill_hit(tile: RID, drill_damage: int):
-	movement.apply_recoil()
-	
-func _on_entering_base(player: Player):
-	hud.visible = false
-	movement.control_enabled = false
-
-func _on_entered_base(player: Player):
-	upgrades_panel.visible = true
-
-func _on_exiting_base(player: Player):
-	upgrades_panel.visible = false
-
-func _on_exited_base(player: Player):
-	hud.visible = true
-	movement.control_enabled = true
+func _on_game_state_changed(old: Globals.GameState, new: Globals.GameState):
+	bubble_vfx.visible = new in _states_for_bubble_vfx
+	if new == Globals.GameState.PLAYING:
+		_drill_tween.play()
+	elif old == Globals.GameState.PLAYING:
+		_drill_tween.pause()
+		

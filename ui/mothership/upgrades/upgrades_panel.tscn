@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct6fuqhom0j4t"]
+
+[ext_resource type="Script" uid="uid://cq65enp8777ja" path="res://ui/mothership/upgrades/upgrades_panel.gd" id="1_mugfb"]
+[ext_resource type="PackedScene" uid="uid://cuc0cuhhwld6q" path="res://ui/mothership/upgrades/resource_upgrade_category_button.tscn" id="3_1ygci"]
+[ext_resource type="Theme" uid="uid://bna4ktuogxibk" path="res://ui/panel_theme_sharp_dark.tres" id="3_cqnpa"]
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="4_go0rq"]
+
+[node name="UpgradesPanel" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mugfb")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme = ExtResource("3_cqnpa")
+
+[node name="CategoriesButtonsVBox" type="VBoxContainer" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResourceUpgradeCategoryButton" parent="Panel/CategoriesButtonsVBox" instance=ExtResource("3_1ygci")]
+layout_mode = 2
+
+[node name="Panel2" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "upgrades todo"
+label_settings = ExtResource("4_go0rq")
+horizontal_alignment = 1
+vertical_alignment = 1

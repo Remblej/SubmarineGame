@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cqq8o2vh2k5v6"]
+
+[ext_resource type="FontFile" uid="uid://b1oo0ebnwqli0" path="res://assets/font/Graduate-Regular.ttf" id="1_cdl8b"]
+
+[resource]
+font = ExtResource("1_cdl8b")
+font_size = 32

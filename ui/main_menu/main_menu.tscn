@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://deyvnfifht7f1"]
+
+[ext_resource type="Script" uid="uid://dkljwjngcgr0n" path="res://ui/main_menu/main_menu.gd" id="1_i5wg5"]
+[ext_resource type="Theme" uid="uid://bna4ktuogxibk" path="res://ui/panel_theme_sharp_dark.tres" id="1_uhj5c"]
+[ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="2_mu8pm"]
+[ext_resource type="LabelSettings" uid="uid://cqq8o2vh2k5v6" path="res://ui/title_label_settings.tres" id="2_omy8q"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i5wg5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+
+[node name="ColorRect" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_uhj5c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "My Little"
+label_settings = ExtResource("2_omy8q")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/VBoxContainer"]
+self_modulate = Color(0.972549, 0.607843, 0.101961, 1)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Nuclear"
+label_settings = ExtResource("2_omy8q")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Submarine"
+label_settings = ExtResource("2_omy8q")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NewGameBtn" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu8pm")
+text = "New Game"
+
+[node name="OptionsBtn" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu8pm")
+text = "Options"
+
+[node name="CreditsBtn" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu8pm")
+text = "Credits"
+
+[node name="ExitBtn" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_mu8pm")
+text = "Exit"
