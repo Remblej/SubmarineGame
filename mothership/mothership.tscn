@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piqk5"]
 size = Vector2(218, 79)
 
-[node name="Base" type="Node2D"]
+[node name="Mothership" type="Node2D"]
 script = ExtResource("1_4w4qf")
 
 [node name="BubbleVfx" type="CPUParticles2D" parent="."]

@@ -14,6 +14,7 @@ var _tile_damage: Dictionary = {} # [Vector2i, int] # TODO clean to avoid memory
 var _explored_tiles: Array[Vector2i] = []
 
 func _ready() -> void:
+	Globals.mothership_starts_descend.connect(_on_mothership_starts_descend)
 	Globals.drill_hit.connect(_on_drill_hit)
 	map_spawner.generated.connect(_on_map_generated)
 	map_spawner.start_generation()
@@ -96,3 +97,6 @@ func _reveal_resources_after_dig(dig_position: Vector2i):
 		_explored_tiles.push_back(current)
 		for offset in [Vector2i(-1, 0), Vector2i(-1, -1), Vector2i(-1, 1), Vector2i(1, 0), Vector2i(1, -1), Vector2i(1, 1), Vector2i(0, -1), Vector2i(0, 1)]: # traverse in 8 directions
 			queue.append(current + offset)
+
+func _on_mothership_starts_descend(target_pos: Vector2):
+	position = target_pos

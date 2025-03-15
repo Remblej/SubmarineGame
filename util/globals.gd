@@ -1,6 +1,6 @@
 extends Node
 
-enum GameState { MAIN_MENU, MOTHERSHIP_UI, UNDOCKING, PLAYING, DOCKING }
+enum GameState { MAIN_MENU, MOTHERSHIP_UI, MOTHERSHIP_DESCENDING, UNDOCKING, PLAYING, DOCKING, MOTHERSHIP_ASCENDING }
 
 var game_state: GameState:
 	set(value):
@@ -25,6 +25,8 @@ signal battery_fully_charged
 signal velocity_changed(velocity: Vector2)
 signal resource_researched(resource: GatherableResource)
 signal screen_shake(magnitude: float, speed: float, duration: float)
+signal embark
+signal mothership_starts_descend(target_pos: Vector2)
 
 func _ready() -> void:
 	depth_changed.connect(_on_depth_change)
