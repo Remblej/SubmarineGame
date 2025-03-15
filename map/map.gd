@@ -65,9 +65,8 @@ func generate():
 	_explored_tiles.clear()
 	_tile_damage.clear()
 	var settings = MapGenerator.MapGenerationSettings.new()
-	settings.playable_area = Rect2i().grow_individual(width/2, 0, width/2, height)
+	settings.playable_area = Rect2i(0, 1, 0, 0).grow_individual(width/2, 0, width/2, height)
 	settings.total_area = settings.playable_area.grow_individual(bounds_padding, 1, bounds_padding, bounds_padding)
-	settings.no_generation_zones.push_back(Rect2i().grow_individual(8, 8, 8, 0)) # base area above playable area
 	settings.no_generation_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, 4)) # small dug out area below base
 	settings.no_bounds_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, height/2)) # make sure no bounds generate under base
 	map_generator.spawn_terrain(settings, terrain_tml, boundary_tml)
