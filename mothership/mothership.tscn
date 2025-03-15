@@ -32,7 +32,7 @@ scale_amount_max = 0.2
 
 [node name="BubbleVfx2" type="CPUParticles2D" parent="."]
 position = Vector2(-114.085, -22.17)
-amount = 50
+amount = 25
 texture = ExtResource("2_xkhlg")
 lifetime = 10.0
 lifetime_randomness = 0.2
@@ -50,7 +50,7 @@ scale_amount_max = 0.2
 
 [node name="BubbleVfx3" type="CPUParticles2D" parent="."]
 position = Vector2(-63.165, -122.655)
-amount = 50
+amount = 5
 texture = ExtResource("2_xkhlg")
 lifetime = 10.0
 lifetime_randomness = 0.2

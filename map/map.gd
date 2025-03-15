@@ -1,16 +1,12 @@
 extends Node2D
 
-@export var width = 64
-@export var height = 64
-@export var bounds_padding = 16
-@export var base_tunnel_width = 4
 @export var tile_break_vfx: PackedScene
 
 @onready var terrain_tml: TileMapLayer = $TerrainTML
 @onready var boundary_tml: TileMapLayer = $BoundaryTML
 @onready var hidden_resources_tml: TileMapLayer = $HiddenResourcesTML
 @onready var resources_tml: TileMapLayer = $ResourcesTML
-@onready var map_generator: MapGenerator = $MapGenerator
+@onready var map_spawner: MapSpawner = $MapSpawner
 
 #var generation_thread: Thread = Thread.new()
 var default_terrain_hit_points = 2 # todo based on depth / biome
@@ -19,7 +15,8 @@ var _explored_tiles: Array[Vector2i] = []
 
 func _ready() -> void:
 	Globals.drill_hit.connect(_on_drill_hit)
-	generate()
+	map_spawner.generated.connect(_on_map_generated)
+	map_spawner.start_generation()
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	var coords = terrain_tml.get_coords_for_body_rid(tile)
@@ -56,47 +53,16 @@ func _resource_at(coords: Vector2i) -> GatherableResource:
 			return Resources.by_id.get(r_id, null)
 	return null
 	
-func generate():
-	var time = Time.get_unix_time_from_system()
-	terrain_tml.clear()
-	boundary_tml.clear()
-	resources_tml.clear()
-	hidden_resources_tml.clear()
-	_explored_tiles.clear()
-	_tile_damage.clear()
-	var settings = MapGenerator.MapGenerationSettings.new()
-	settings.playable_area = Rect2i(0, 1, 0, 0).grow_individual(width/2, 0, width/2, height)
-	settings.total_area = settings.playable_area.grow_individual(bounds_padding, 1, bounds_padding, bounds_padding)
-	settings.no_generation_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, 4)) # small dug out area below base
-	settings.no_bounds_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, height/2)) # make sure no bounds generate under base
-	
-	map_generator.spawn_terrain(settings, terrain_tml, boundary_tml)
-	map_generator.spawn_resources(width, height, terrain_tml, hidden_resources_tml)
-	#_reveal_resources_initially()
-	_reveal_resources_after_dig(Vector2i.ZERO) ## reveal resources initially visible
-	print("full generation took: " + str(Time.get_unix_time_from_system() - time))
-	
 func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
 	if event.is_action_pressed("debug_regenerate"):
-		generate()
-		#generation_thread.start(generate)
+		map_spawner.start_generation()
 
-#func _reveal_resources_initially():
-	#for x in range(-width/2, width/2):
-		#for y in range(0, height):
-			#var coords = Vector2i(x, y)
-			#var source_id = hidden_resources_tml.get_cell_source_id(coords)
-			#if source_id != -1 and _is_next_to_edge(coords):
-				#_reveal_resources_at([coords])
-#
-#func _reveal_resources_at(coords: Array[Vector2i]):
-	#for c in coords:
-		#var source_id = hidden_resources_tml.get_cell_source_id(c)
-		#if source_id != -1:
-			#resources_tml.set_cell(c, source_id, hidden_resources_tml.get_cell_atlas_coords(c))
-			#hidden_resources_tml.erase_cell(c)
+func _on_map_generated():
+	_explored_tiles.clear()
+	_tile_damage.clear()
+	_reveal_resources_after_dig(Vector2i.ZERO) ## reveal resources initially visible
 
 func _reveal_resources_at(coords: Vector2i):
 	var source_id = hidden_resources_tml.get_cell_source_id(coords)

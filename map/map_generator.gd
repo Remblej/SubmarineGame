@@ -6,14 +6,23 @@ class_name MapGenerator extends Node
 @export var bounds_noise: FastNoiseLite
 @export var bounds_fluctuation = 5.0
 
-func spawn_terrain(settings: MapGenerationSettings, terrain_tml: TileMapLayer, boundary_tml: TileMapLayer):
-	var time = Time.get_unix_time_from_system()
+func generate(settings: MapGenerationSettings) -> MapData:
+	var time_begin = Time.get_unix_time_from_system()
+	var map_data = MapData.new()
+	
+	_generate_terrain(settings, map_data)
+	var time_after_terrain = Time.get_unix_time_from_system()
+	print("terrain generated in: " + str(time_after_terrain - time_begin))
+
+	_generate_resources(settings, map_data)
+	print("resources generated in: " + str(Time.get_unix_time_from_system() - time_after_terrain))
+
+	return map_data
+
+func _generate_terrain(settings: MapGenerationSettings, map_data: MapData):
 	caves_noise.seed = randi()
 	bounds_noise.seed = randi()
 	var bounds_fluctuations_factors = _calc_bounds_fluctuation_factors(settings)
-	var terrain_coords = []
-	var boundary_cords = []
-	
 	for x in range(settings.total_area.position.x, settings.total_area.end.x):
 		for y in range(settings.total_area.position.y, settings.total_area.end.y):
 			var coords = Vector2i(x, y)
@@ -21,21 +30,17 @@ func spawn_terrain(settings: MapGenerationSettings, terrain_tml: TileMapLayer, b
 				continue
 			if _is_in_playable_area(coords, settings, bounds_fluctuations_factors):
 				if caves_noise.get_noise_2d(x, y) <= cave_threshold:
-					terrain_coords.push_back(coords)
+					map_data.terrain.push_back(coords)
 			elif not is_in_no_bounds_zone(coords, settings):
-				boundary_cords.push_back(coords)
-	terrain_tml.set_cells_terrain_connect(terrain_coords, 0, 0, false)
-	boundary_tml.set_cells_terrain_connect(boundary_cords, 0, 0, false)
-
-	print("terrain generated in: " + str(Time.get_unix_time_from_system() - time))
-
-func spawn_resources(width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
-	var time = Time.get_unix_time_from_system()
+				map_data.boundary.push_back(coords)
+	
+func _generate_resources(settings: MapGenerationSettings, map_data: MapData):
 	for r in Resources.all:
-		_spawn_resource(r, width, height, terrain_tml, resource_tml)
-	print("resources generated in: " + str(Time.get_unix_time_from_system() - time))
-		
-func _spawn_resource(resource: GatherableResource, width: int, height: int, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
+		_generate_resource(r, settings, map_data)
+
+func _generate_resource(resource: GatherableResource, settings: MapGenerationSettings, map_data: MapData):
+	var width = settings.playable_area.size.x
+	var height = settings.playable_area.size.y
 	resource_noise.seed = randi()
 	var noise_values: Array[ValueEntry] = []
 	for x in range(-width/2, width/2):
@@ -51,22 +56,22 @@ func _spawn_resource(resource: GatherableResource, width: int, height: int, terr
 	while cluster_count < desired_cluster_count and noise_values.size() > 0:
 		var candidate = noise_values.pop_back() # take position with highest value
 		# Check if there is terrain underneath
-		if terrain_tml.get_cell_source_id(candidate.pos) == -1:
+		if candidate.pos not in map_data.terrain:
 			continue
-		if _is_or_neighbours_resource(candidate.pos, resource_tml):
+		if _is_or_neighbours_resource(candidate.pos, map_data):
 			continue
-		_set_resource_tile(resource, candidate.pos, resource_tml)
-		grow_cluster(resource, candidate.pos, terrain_tml, resource_tml)
+		map_data.resources[candidate.pos] = resource.id
+		grow_cluster(resource, candidate.pos, map_data)
 		cluster_count += 1
 
-func _is_or_neighbours_resource(pos: Vector2i, tml: TileMapLayer):
+func _is_or_neighbours_resource(pos: Vector2i, map_data: MapData):
 	for x in [pos.x - 1, pos.x, pos.x + 1]:
 		for y in [pos.y - 1, pos.y, pos.y + 1]:
-			if tml.get_cell_source_id(Vector2i(x, y)) != -1:
+			if map_data.resources.has(Vector2i(x, y)):
 				return true
 	return false
 
-func grow_cluster(resource: GatherableResource, center: Vector2i, terrain_tml: TileMapLayer, resource_tml: TileMapLayer):
+func grow_cluster(resource: GatherableResource, center: Vector2i, map_data: MapData):
 	var frontier = [center]
 	var visited = [center]
 	var cluster_size = 1
@@ -82,17 +87,14 @@ func grow_cluster(resource: GatherableResource, center: Vector2i, terrain_tml: T
 				continue
 			visited.push_back(neighbor)
 			# Check if there is terrain underneath
-			if terrain_tml.get_cell_source_id(neighbor) == -1:
+			if neighbor not in map_data.terrain:
 				continue
 			# Optional: add a probability check to make growth irregular
 			if randf() < .6:
-				_set_resource_tile(resource, neighbor, resource_tml)
+				map_data.resources[neighbor] = resource.id
 				frontier.append(neighbor)
 				cluster_size += 1
 
-func _set_resource_tile(resource: GatherableResource, coords: Vector2i, resource_tml: TileMapLayer):
-	var atlas_coords = resource.atlas_coords.pick_random()
-	resource_tml.set_cell(coords, 2, atlas_coords)
 
 func is_in_no_generation_zone(coords: Vector2i, settings: MapGenerationSettings) -> bool:
 	for no_zone in settings.no_generation_zones:
@@ -154,3 +156,8 @@ class MapGenerationSettings:
 class ValueEntry:
 	var pos: Vector2i
 	var value: float
+
+class MapData:
+	var terrain: Array[Vector2i] = []
+	var boundary: Array[Vector2i] = []
+	var resources: Dictionary[Vector2i, GatherableResource.Id] = {}

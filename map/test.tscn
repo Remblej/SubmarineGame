@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=68 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" uid="uid://bkhl5aopmavgh" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="Texture2D" uid="uid://dwc1bgi1r2rxu" path="res://assets/background.png" id="1_no7ab"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bger1uosglj64" path="res://map/map_generator.gd" id="7_11icf"]
 [ext_resource type="Texture2D" uid="uid://d1a1ri51xf670" path="res://assets/graphics/tileset_terrain.png" id="7_mjhws"]
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/graphics/tileset_bg.png" id="8_rqics"]
+[ext_resource type="Script" uid="uid://cv5vdwo7tyj25" path="res://map/map_spawner.gd" id="9_51i4e"]
 [ext_resource type="PackedScene" uid="uid://dlg26rb6gd6m" path="res://player/debug_player.tscn" id="9_m2e55"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/graphics/tileset_resources.png" id="9_tglud"]
 
@@ -680,8 +681,6 @@ texture = ExtResource("2_i5mr6")
 
 [node name="Map" type="Node2D" parent="."]
 script = ExtResource("1_f2k5u")
-bounds_padding = 32
-base_tunnel_width = 2
 tile_break_vfx = ExtResource("4_jftmf")
 
 [node name="TerrainTML" type="TileMapLayer" parent="Map"]
@@ -704,7 +703,15 @@ modulate = Color(0.708613, 0.672995, 0.540521, 1)
 tile_map_data = PackedByteArray("AAD6/w8AAgAAAAAAAAD5/w4AAgABAAAAAAD6/wwAAgACAAAAAAD7/wsAAgACAAAAAAD8/wsAAgABAAAAAAD7/wwAAgADAAAAAAD8/wwAAgADAAAAAAD9/w8AAgAAAAMAAAD9/xAAAgAAAAMAAAD9/w4AAgAAAAMAAAD6/xEAAgAAAAEAAAD7/xEAAgAAAAEAAAD6/xIAAgAAAAEAAAD7/xIAAgAAAAEAAAD9/xIAAgAAAAIAAAD9/xMAAgAAAAIAAAD+/xIAAgAAAAIAAAD+/xMAAgAAAAIAAAD//xIAAgAAAAIAAAD//xMAAgAAAAIAAAD6/w4AAgADAAAAAAD6/w0AAgACAAAAAAD5/w0AAgACAAAAAAD5/wwAAgABAAAAAAD6/wsAAgAAAAAAAAD5/wsAAgAAAAAAAAD7/woAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_v1x37")
 
-[node name="MapGenerator" type="Node" parent="Map"]
+[node name="MapSpawner" type="Node" parent="Map" node_paths=PackedStringArray("terrain_tml", "boundary_tml", "hidden_resources_tml", "resources_tml")]
+script = ExtResource("9_51i4e")
+base_tunnel_width = 2
+terrain_tml = NodePath("../TerrainTML")
+boundary_tml = NodePath("../BoundaryTML")
+hidden_resources_tml = NodePath("../HiddenResourcesTML")
+resources_tml = NodePath("../ResourcesTML")
+
+[node name="MapGenerator" type="Node" parent="Map/MapSpawner"]
 script = ExtResource("7_11icf")
 cave_threshold = 0.7
 caves_noise = SubResource("FastNoiseLite_5efss")
@@ -713,7 +720,6 @@ bounds_noise = SubResource("FastNoiseLite_ibo6x")
 bounds_fluctuation = 10.0
 
 [node name="Mothership" parent="." instance=ExtResource("5_jdixt")]
-position = Vector2(5e+06, -512)
 
 [node name="DebugPlayer" parent="." instance=ExtResource("9_m2e55")]
 
