@@ -6,10 +6,6 @@ class_name MapGenerator extends Node
 @export var bounds_noise: FastNoiseLite
 @export var bounds_fluctuation = 5.0
 
-class ValueEntry:
-	var pos: Vector2i
-	var value: float
-
 func spawn_terrain(settings: MapGenerationSettings, terrain_tml: TileMapLayer, boundary_tml: TileMapLayer):
 	var time = Time.get_unix_time_from_system()
 	caves_noise.seed = randi()
@@ -155,3 +151,6 @@ class MapGenerationSettings:
 	var no_generation_zones: Array[Rect2i] = [] ## zones in which nothing will be generated
 	var no_bounds_zones: Array[Rect2i] = [] ## zones in which bounds will not be spawned
 	
+class ValueEntry:
+	var pos: Vector2i
+	var value: float

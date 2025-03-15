@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://cwyt7c1vixqkw"]
+[gd_scene load_steps=67 format=4 uid="uid://cwyt7c1vixqkw"]
 
 [ext_resource type="Script" uid="uid://bkhl5aopmavgh" path="res://map/map.gd" id="1_f2k5u"]
 [ext_resource type="Texture2D" uid="uid://dwc1bgi1r2rxu" path="res://assets/background.png" id="1_no7ab"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bch77emqbtsxq" path="res://assets/graphics/tileset_bg.png" id="8_rqics"]
 [ext_resource type="PackedScene" uid="uid://dlg26rb6gd6m" path="res://player/debug_player.tscn" id="9_m2e55"]
 [ext_resource type="Texture2D" uid="uid://dnpvmvslfbpo8" path="res://assets/graphics/tileset_resources.png" id="9_tglud"]
-[ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/player.tscn" id="10_b1pgp"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0tpdm"]
 polygon = PackedVector2Array(12, -20, 20, -12, 20, 32, -20, 32, -20, -12, -12, -20)
@@ -714,9 +713,7 @@ bounds_noise = SubResource("FastNoiseLite_ibo6x")
 bounds_fluctuation = 10.0
 
 [node name="Mothership" parent="." instance=ExtResource("5_jdixt")]
-
-[node name="Player" parent="Mothership" instance=ExtResource("10_b1pgp")]
-position = Vector2(2, -6)
+position = Vector2(5e+06, -512)
 
 [node name="DebugPlayer" parent="." instance=ExtResource("9_m2e55")]
 

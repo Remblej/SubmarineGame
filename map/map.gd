@@ -6,13 +6,13 @@ extends Node2D
 @export var base_tunnel_width = 4
 @export var tile_break_vfx: PackedScene
 
-@onready var background_tml: TileMapLayer = $BackgroundTML
 @onready var terrain_tml: TileMapLayer = $TerrainTML
 @onready var boundary_tml: TileMapLayer = $BoundaryTML
 @onready var hidden_resources_tml: TileMapLayer = $HiddenResourcesTML
 @onready var resources_tml: TileMapLayer = $ResourcesTML
 @onready var map_generator: MapGenerator = $MapGenerator
 
+#var generation_thread: Thread = Thread.new()
 var default_terrain_hit_points = 2 # todo based on depth / biome
 var _tile_damage: Dictionary = {} # [Vector2i, int] # TODO clean to avoid memory leak
 var _explored_tiles: Array[Vector2i] = []
@@ -69,6 +69,7 @@ func generate():
 	settings.total_area = settings.playable_area.grow_individual(bounds_padding, 1, bounds_padding, bounds_padding)
 	settings.no_generation_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, 4)) # small dug out area below base
 	settings.no_bounds_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, height/2)) # make sure no bounds generate under base
+	
 	map_generator.spawn_terrain(settings, terrain_tml, boundary_tml)
 	map_generator.spawn_resources(width, height, terrain_tml, hidden_resources_tml)
 	#_reveal_resources_initially()
@@ -80,6 +81,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("debug_regenerate"):
 		generate()
+		#generation_thread.start(generate)
 
 #func _reveal_resources_initially():
 	#for x in range(-width/2, width/2):
