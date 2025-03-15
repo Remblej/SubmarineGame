@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4noh2qbau26y"]
+[gd_scene load_steps=8 format=3 uid="uid://c4noh2qbau26y"]
 
 [ext_resource type="Script" uid="uid://bhgsl0eetnq7c" path="res://mothership/mothership.gd" id="1_4w4qf"]
 [ext_resource type="Texture2D" uid="uid://ckuub02jehr8k" path="res://assets/graphics/mothership.png" id="2_uiimd"]
 [ext_resource type="Texture2D" uid="uid://bum41lvakrfbu" path="res://assets/graphics/bubble.png" id="2_xkhlg"]
 [ext_resource type="Script" uid="uid://dras6lto8o4ug" path="res://mothership/storage.gd" id="3_8e73m"]
 [ext_resource type="PackedScene" uid="uid://ckgaf5gu5p2qj" path="res://player/player.tscn" id="4_ylwwb"]
+[ext_resource type="Texture2D" uid="uid://cffgy865ebe1k" path="res://assets/graphics/tex_cone.png" id="6_gyoop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piqk5"]
 size = Vector2(218, 79)
@@ -14,7 +15,7 @@ script = ExtResource("1_4w4qf")
 
 [node name="BubbleVfx" type="CPUParticles2D" parent="."]
 position = Vector2(-189.22, -55.11)
-amount = 200
+amount = 300
 texture = ExtResource("2_xkhlg")
 lifetime = 10.0
 lifetime_randomness = 0.2
@@ -65,6 +66,20 @@ damping_min = 40.0
 damping_max = 40.0
 scale_amount_min = 0.1
 scale_amount_max = 0.2
+
+[node name="FlashLight" type="PointLight2D" parent="."]
+position = Vector2(68, -63)
+range_layer_min = -1
+shadow_enabled = true
+texture = ExtResource("6_gyoop")
+offset = Vector2(392, 15.3)
+
+[node name="FlashLight2" type="PointLight2D" parent="."]
+position = Vector2(68, -63)
+energy = 0.1
+range_layer_min = -1
+texture = ExtResource("6_gyoop")
+offset = Vector2(392, 15.3)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.382, 0.382)
