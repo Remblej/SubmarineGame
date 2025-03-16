@@ -1,6 +1,6 @@
 class_name GatherableResource extends Resource
 
-enum Id { GOLD, IRON, COPPER, DIAMOND }
+enum Id { GOLD, IRON, COPPER, URANIUM }
 
 @export var id: Id
 @export var name: String
