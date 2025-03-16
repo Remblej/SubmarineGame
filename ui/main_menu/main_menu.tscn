@@ -40,6 +40,7 @@ alignment = 1
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/VBoxContainer"]
+self_modulate = Color(0.85098, 0.133333, 0.270588, 1)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "My Little"
@@ -55,6 +56,7 @@ label_settings = ExtResource("2_omy8q")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/VBoxContainer"]
+self_modulate = Color(0.85098, 0.133333, 0.270588, 1)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Submarine"
@@ -63,13 +65,15 @@ horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="NewGameBtn" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.952941, 0.596078, 0.101961, 1)
 layout_mode = 2
 theme = ExtResource("2_mu8pm")
 text = "New Game"
