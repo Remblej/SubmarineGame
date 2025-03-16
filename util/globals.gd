@@ -1,6 +1,6 @@
 extends Node
 
-enum GameState { MAIN_MENU, MOTHERSHIP_UI, MOTHERSHIP_DESCENDING, UNDOCKING, PLAYING, DOCKING, MOTHERSHIP_ASCENDING }
+enum GameState { MAIN_MENU, CHOOSING_BIOME, CHOOSING_POCKET, MOTHERSHIP_UI, MOTHERSHIP_DESCENDING, UNDOCKING, PLAYING, DOCKING, MOTHERSHIP_ASCENDING }
 
 var game_state: GameState:
 	set(value):
@@ -9,6 +9,8 @@ var game_state: GameState:
 		game_state_changed.emit(old, game_state)
 
 var max_depth: int = 0
+var current_biome: Biome
+var current_pocket: Pocket
 
 signal game_state_changed(old: GameState, new: GameState)
 signal drill_hit(tile: RID, drill_damage: int)
@@ -26,6 +28,7 @@ signal velocity_changed(velocity: Vector2)
 signal resource_researched(resource: GatherableResource)
 signal screen_shake(magnitude: float, speed: float, duration: float)
 signal embark
+signal map_generated
 signal mothership_starts_descend(target_pos: Vector2)
 
 func _ready() -> void:

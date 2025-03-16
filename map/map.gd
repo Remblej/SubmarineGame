@@ -14,10 +14,10 @@ var _tile_damage: Dictionary = {} # [Vector2i, int] # TODO clean to avoid memory
 var _explored_tiles: Array[Vector2i] = []
 
 func _ready() -> void:
+	Globals.game_state_changed.connect(func(_old, new: Globals.GameState): if new == Globals.GameState.MOTHERSHIP_DESCENDING: map_spawner.start_generation())
 	Globals.mothership_starts_descend.connect(_on_mothership_starts_descend)
 	Globals.drill_hit.connect(_on_drill_hit)
 	map_spawner.generated.connect(_on_map_generated)
-	map_spawner.start_generation()
 
 func _on_drill_hit(tile: RID, drill_damage: int):
 	var coords = terrain_tml.get_coords_for_body_rid(tile)
@@ -64,6 +64,7 @@ func _on_map_generated():
 	_explored_tiles.clear()
 	_tile_damage.clear()
 	_reveal_resources_after_dig(Vector2i.ZERO) ## reveal resources initially visible
+	Globals.map_generated.emit()
 
 func _reveal_resources_at(coords: Vector2i):
 	var source_id = hidden_resources_tml.get_cell_source_id(coords)
@@ -100,3 +101,5 @@ func _reveal_resources_after_dig(dig_position: Vector2i):
 
 func _on_mothership_starts_descend(target_pos: Vector2):
 	position = target_pos
+	terrain_tml.modulate = Globals.current_biome.terrain_color
+	boundary_tml.modulate = Globals.current_biome.boundary_color

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ckgaf5gu5p2qj"]
+[gd_scene load_steps=30 format=3 uid="uid://ckgaf5gu5p2qj"]
 
 [ext_resource type="Script" uid="uid://b7od04d8mfv4y" path="res://player/player.gd" id="1_46rre"]
 [ext_resource type="Texture2D" uid="uid://n8yi1i5dcmb3" path="res://assets/graphics/submarine.png" id="2_m8vb3"]
@@ -19,7 +19,9 @@
 [ext_resource type="Shader" uid="uid://dy7oml3qjfhvv" path="res://vfx/cracked_glass.gdshader" id="12_05cob"]
 [ext_resource type="Shader" uid="uid://bv7e322egvu3y" path="res://vfx/crt.gdshader" id="12_aw4ju"]
 [ext_resource type="PackedScene" uid="uid://deyvnfifht7f1" path="res://ui/main_menu/main_menu.tscn" id="17_65viv"]
+[ext_resource type="PackedScene" uid="uid://dvqswwgu43byi" path="res://ui/biomes/biomes_ui.tscn" id="17_x7c3f"]
 [ext_resource type="Texture2D" uid="uid://bum41lvakrfbu" path="res://assets/graphics/bubble.png" id="18_672dq"]
+[ext_resource type="PackedScene" uid="uid://csi803d6wiequ" path="res://ui/pockets/pockets_ui.tscn" id="18_bjvpn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yno6g"]
 radius = 21.0
@@ -154,6 +156,10 @@ grow_vertical = 2
 [node name="MotherShipUI" parent="CanvasLayer2" instance=ExtResource("10_7ktq7")]
 
 [node name="Hud" parent="CanvasLayer2" instance=ExtResource("4_0tymi")]
+
+[node name="BiomesUi" parent="CanvasLayer2" instance=ExtResource("17_x7c3f")]
+
+[node name="PocketsUi" parent="CanvasLayer2" instance=ExtResource("18_bjvpn")]
 
 [node name="MainMenu" parent="CanvasLayer2" instance=ExtResource("17_65viv")]
 

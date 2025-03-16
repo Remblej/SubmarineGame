@@ -1,7 +1,5 @@
 class_name MapSpawner extends Node
 
-@export var width = 64
-@export var height = 64
 @export var bounds_padding = 16
 @export var base_tunnel_width = 4
 @export var async_tile_spawn_batch_size = 128
@@ -63,6 +61,8 @@ func _process(delta: float) -> void:
 
 func _generate_map_data_threaded():
 	## Prep settings
+	var width = Globals.current_pocket.random_width()
+	var height = Globals.current_pocket.random_height()
 	var settings = MapGenerator.MapGenerationSettings.new()
 	settings.playable_area = Rect2i(0, 1, 0, 0).grow_individual(width/2, 0, width/2, height)
 	settings.total_area = settings.playable_area.grow_individual(bounds_padding, 1, bounds_padding, bounds_padding)

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsxccvswlj4xp"]
+
+[ext_resource type="Theme" uid="uid://cdbir6qeifrph" path="res://ui/panel_theme_rounded_dark.tres" id="1_owwc5"]
+[ext_resource type="Script" uid="uid://bl74v3vy6hdpa" path="res://ui/pockets/pocket_button.gd" id="2_pkcr4"]
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="3_hipav"]
+
+[node name="PocketButton" type="Button"]
+custom_minimum_size = Vector2(256, 256)
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_owwc5")
+script = ExtResource("2_pkcr4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Size: "
+label_settings = ExtResource("3_hipav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SizeLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Small"
+label_settings = ExtResource("3_hipav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Terrain Hardness:"
+label_settings = ExtResource("3_hipav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HardnessLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Soft"
+label_settings = ExtResource("3_hipav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Resources:"
+label_settings = ExtResource("3_hipav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResourcesLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "TODO"
+label_settings = ExtResource("3_hipav")
+horizontal_alignment = 1
+vertical_alignment = 1

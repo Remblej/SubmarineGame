@@ -49,7 +49,7 @@ func _on_game_state_change(_old: Globals.GameState, new: Globals.GameState):
 	elif new == Globals.GameState.MOTHERSHIP_DESCENDING:
 		var ts = get_tree().create_tween()
 		ts.tween_property(self, "_current_speed", 200, 1).from(target_coasting_speed)
-		await ts.finished
+		await Globals.map_generated
 		_is_traveling = false
 
 		var target_pos = Vector2(position.x + descening_distance_forward, 0)

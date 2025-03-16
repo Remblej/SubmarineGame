@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://daoc2oqe1ikhj"]
+
+[ext_resource type="Script" uid="uid://dy6r1xnve6fbr" path="res://biomes/biomes.gd" id="1_i5ago"]
+[ext_resource type="Script" uid="uid://bxmab3rw46iv3" path="res://biomes/biome.gd" id="2_j1ohi"]
+
+[sub_resource type="Resource" id="Resource_suw0h"]
+script = ExtResource("2_j1ohi")
+name = "Shallow Trench"
+terrain_color = Color(0.401409, 0.36298, 0.279324, 1)
+boundary_color = Color(0.249026, 0.16972, 0.0661078, 1)
+min_hardness = 0
+max_hardness = 2
+min_size = 0
+max_size = 1
+metadata/_custom_type_script = "uid://bxmab3rw46iv3"
+
+[sub_resource type="Resource" id="Resource_j1ohi"]
+script = ExtResource("2_j1ohi")
+name = "Obsidian Reef"
+terrain_color = Color(0.211765, 0.133333, 0.333333, 1)
+boundary_color = Color(0.109611, 0.060825, 0.18499, 1)
+min_hardness = 1
+max_hardness = 3
+min_size = 3
+max_size = 4
+metadata/_custom_type_script = "uid://bxmab3rw46iv3"
+
+[node name="Biomes" type="Node"]
+script = ExtResource("1_i5ago")
+all = Array[ExtResource("2_j1ohi")]([SubResource("Resource_suw0h"), SubResource("Resource_j1ohi")])

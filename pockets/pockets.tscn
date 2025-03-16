@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpyqmuy0y0xt"]
+
+[sub_resource type="GDScript" id="GDScript_qoexe"]
+
+[node name="Pockets" type="Node"]
+script = SubResource("GDScript_qoexe")

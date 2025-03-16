@@ -5,8 +5,8 @@ extends Node2D
 var _enabled = false
 
 func _process(delta: float) -> void:
-	var speed = 10.0 / camera.zoom.x
-	position += Input.get_vector("debug_left", "debug_right", "debug_up", "debug_bottom") * speed
+	var speed = 100.0 / camera.zoom.x
+	position += Input.get_vector("debug_left", "debug_right", "debug_up", "debug_bottom") * speed * delta
 
 
 func _input(event: InputEvent) -> void:
@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 		var zoom = camera.zoom.x + .1
 		camera.zoom = Vector2(zoom, zoom)
 	if event.is_action_pressed("debug_zoom_out"):
-		var zoom = camera.zoom.x - .1
+		var zoom = max(camera.zoom.x - .1, 0)
 		camera.zoom = Vector2(zoom, zoom)
 	if event.is_action_pressed("debug_btn"):
 		_enabled = not _enabled

@@ -23,6 +23,6 @@ func update_ui():
 			label.text = resource.get_effective_name()
 		if texture_rect:
 			texture_rect.texture = resource.icon
-	modulate.v = 1 if selected else .5
+	modulate.v = 1.0 if selected else .5
 	release_focus()  # Ensures hover states reset properly
 	

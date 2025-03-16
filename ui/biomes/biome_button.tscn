@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://s4f5lkwfvkau"]
+
+[ext_resource type="Script" uid="uid://cuq5e7c6onuwq" path="res://ui/biomes/biome_button.gd" id="1_54gnb"]
+[ext_resource type="Theme" uid="uid://bdilnrdo5nnri" path="res://ui/panel_theme_rounded_light.tres" id="1_vb6lr"]
+[ext_resource type="LabelSettings" uid="uid://b0u07fspob1bq" path="res://ui/label_settings.tres" id="3_vb6lr"]
+
+[node name="BiomeButton" type="Button"]
+custom_minimum_size = Vector2(256, 128)
+offset_right = 256.0
+offset_bottom = 128.0
+theme = ExtResource("1_vb6lr")
+script = ExtResource("1_54gnb")
+
+[node name="BiomeNameLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.5
+offset_top = -18.5
+offset_right = 106.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Biome Name"
+label_settings = ExtResource("3_vb6lr")
+horizontal_alignment = 1
+vertical_alignment = 1

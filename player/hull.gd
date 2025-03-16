@@ -23,4 +23,4 @@ func _calc_hull_damage():
 	return max(d, 0)
 
 func _calc_hull_repair():
-	return repairing_rate if _is_repairing else 0
+	return repairing_rate if _is_repairing else 0.0

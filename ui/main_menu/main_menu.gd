@@ -11,4 +11,4 @@ func _ready() -> void:
 	exit_btn.pressed.connect(func(): get_tree().quit())
 
 func _new_game():
-	Globals.game_state = Globals.GameState.MOTHERSHIP_UI
+	Globals.game_state = Globals.GameState.CHOOSING_BIOME
