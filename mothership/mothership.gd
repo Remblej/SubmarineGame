@@ -74,7 +74,7 @@ func _on_game_state_change(_old: Globals.GameState, new: Globals.GameState):
 		trot.tween_property(self, "rotation_degrees", 0, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		await tx.finished
 		_is_traveling = true
-		Globals.game_state = Globals.GameState.MOTHERSHIP_UI
+		Globals.game_state = Globals.GameState.CHOOSING_BIOME
 		var ts = get_tree().create_tween()
 		ts.tween_property(self, "_current_speed", target_coasting_speed, 1).from(200)
 		
