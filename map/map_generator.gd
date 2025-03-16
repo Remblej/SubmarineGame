@@ -40,10 +40,12 @@ func _generate_resources(settings: MapGenerationSettings, map_data: MapData):
 
 func _generate_resource(resource: GatherableResource, settings: MapGenerationSettings, map_data: MapData):
 	var width = settings.playable_area.size.x
+	@warning_ignore("integer_division")
+	var half_width = width / 2
 	var height = settings.playable_area.size.y
 	resource_noise.seed = randi()
 	var noise_values: Array[ValueEntry] = []
-	for x in range(-width/2, width/2):
+	for x in range(-half_width, half_width):
 		for y in range(0, height):
 			var entry = ValueEntry.new()
 			entry.pos = Vector2i(x, y)
@@ -130,11 +132,11 @@ func _calc_bounds_fluctuation_factors(settings: MapGenerationSettings) -> Dictio
 	for x in [settings.playable_area.position.x, settings.playable_area.end.x + 1]:
 		for y in range(settings.playable_area.position.y, settings.playable_area.end.y + 1):
 			bounds[Vector2i(x, y)] = bounds_noise.get_noise_2d(x+1000, y+1000)
-	var min = bounds.values().min()
-	var max = bounds.values().max()
+	var min_val = bounds.values().min()
+	var max_val = bounds.values().max()
 	for v in bounds.keys():
 		var val = float(bounds[v])
-		bounds[v] = (val - min) / (max - min)
+		bounds[v] = (val - min_val) / (max_val - min_val)
 	return bounds
 
 func _get_bound_fluctuations_factor(coords: Vector2i, bounds_fluctuations_factors: Dictionary) -> float:

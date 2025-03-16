@@ -32,7 +32,7 @@ func _ready() -> void:
 	bubble_vfx.visible = false
 	Globals.game_state_changed.connect(_on_game_state_changed)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# depth
 	var new_depth = round((global_position.y - 32) / 64)
 	if _depth != new_depth:

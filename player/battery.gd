@@ -29,7 +29,7 @@ func is_depleted() -> bool:
 func _on_velocity_changed(velocity: Vector2):
 	_is_engine_used = velocity.length_squared() > 0
 
-func _on_drill_hit(tile: RID, drill_damage: int):
+func _on_drill_hit(_tile: RID, _drill_damage: int):
 	_update_current_level(-_drill_hit_depletion)
 
 func _update_current_level(change):

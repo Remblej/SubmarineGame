@@ -32,7 +32,7 @@ func start_generation():
 	_generator_thread = Thread.new()
 	_generator_thread.start(_generate_map_data_threaded)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	## SPAWNING TERRAIN
 	if _state == State.SPAWNING_TERRAIN:
 		if _terrain_spawn_queue.is_empty():
@@ -62,12 +62,18 @@ func _process(delta: float) -> void:
 func _generate_map_data_threaded():
 	## Prep settings
 	var width = Globals.current_pocket.random_width()
+	@warning_ignore("integer_division")
+	var half_width = width / 2
 	var height = Globals.current_pocket.random_height()
+	@warning_ignore("integer_division")
+	var half_height = height / 2
+	@warning_ignore("integer_division")
+	var half_tunnel_width = base_tunnel_width / 2
 	var settings = MapGenerator.MapGenerationSettings.new()
-	settings.playable_area = Rect2i(0, 1, 0, 0).grow_individual(width/2, 0, width/2, height)
+	settings.playable_area = Rect2i(0, 1, 0, 0).grow_individual(half_width, 0, half_width, height)
 	settings.total_area = settings.playable_area.grow_individual(bounds_padding, 1, bounds_padding, bounds_padding)
-	settings.no_generation_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, 4)) # small dug out area below base
-	settings.no_bounds_zones.push_back(Rect2i().grow_individual(base_tunnel_width / 2, 0, base_tunnel_width / 2, height/2)) # make sure no bounds generate under base
+	settings.no_generation_zones.push_back(Rect2i().grow_individual(half_tunnel_width, 0, half_tunnel_width, 4)) # small dug out area below base
+	settings.no_bounds_zones.push_back(Rect2i().grow_individual(half_tunnel_width, 0, half_tunnel_width, half_height)) # make sure no bounds generate under base
 	## Generate terrain data
 	var data = map_generator.generate(settings)
 	set_deferred("_terrain_spawn_queue", data.terrain)

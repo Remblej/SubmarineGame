@@ -22,6 +22,10 @@ Resources="*res://resources/resources.tscn"
 Upgrades="*res://upgrades/upgrades.tscn"
 Biomes="*res://biomes/biomes.tscn"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/mode=2

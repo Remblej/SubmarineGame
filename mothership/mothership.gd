@@ -1,9 +1,9 @@
 class_name Mothership extends Node2D
 
-@export var target_coasting_speed = 75.0
-@export var traveling_alitutude = -64*6
-@export var descening_distance_forward = 64*14
-@export var descening_duration = 7
+@export var target_coasting_speed: float = 75.0
+@export var traveling_alitutude: float = -64*6
+@export var descening_distance_forward: float = 64*14
+@export var descening_duration: float = 7.0
 
 @onready var docking_area: Area2D = $DockingArea
 @onready var docking_marker: Marker2D = $DockingMarker
@@ -57,9 +57,9 @@ func _on_game_state_change(_old: Globals.GameState, new: Globals.GameState):
 		tx.tween_property(self, "position:x", target_pos.x, descening_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		var ty = get_tree().create_tween()
 		ty.tween_property(self, "position:y", target_pos.y, descening_duration).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-		var tr = get_tree().create_tween()
-		tr.tween_property(self, "rotation_degrees", 30, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-		tr.tween_property(self, "rotation_degrees", 0, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		var trot = get_tree().create_tween()
+		trot.tween_property(self, "rotation_degrees", 30, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		trot.tween_property(self, "rotation_degrees", 0, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		Globals.mothership_starts_descend.emit(target_pos)
 		await tx.finished
 		Globals.game_state = Globals.GameState.UNDOCKING
@@ -69,9 +69,9 @@ func _on_game_state_change(_old: Globals.GameState, new: Globals.GameState):
 		tx.tween_property(self, "position:x", target_pos.x, descening_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 		var ty = get_tree().create_tween()
 		ty.tween_property(self, "position:y", target_pos.y, descening_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-		var tr = get_tree().create_tween()
-		tr.tween_property(self, "rotation_degrees", -30, descening_duration/2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tr.tween_property(self, "rotation_degrees", 0, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		var trot = get_tree().create_tween()
+		trot.tween_property(self, "rotation_degrees", -30, descening_duration/2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		trot.tween_property(self, "rotation_degrees", 0, descening_duration/2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		await tx.finished
 		_is_traveling = true
 		Globals.game_state = Globals.GameState.MOTHERSHIP_UI

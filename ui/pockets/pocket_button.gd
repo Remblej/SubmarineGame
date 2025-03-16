@@ -24,8 +24,8 @@ func _on_pressed():
 	Globals.current_pocket = pocket
 	Globals.game_state = Globals.GameState.MOTHERSHIP_UI
 
-func _size_text(size: Pocket.Size) -> String:
-	match size:
+func _size_text(pocket_size: Pocket.Size) -> String:
+	match pocket_size:
 		Pocket.Size.VERY_SMALL: 
 			return "Very Small"
 		Pocket.Size.SMALL: 

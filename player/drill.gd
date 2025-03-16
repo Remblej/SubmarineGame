@@ -18,7 +18,7 @@ func _on_cooldown_end():
 	set_deferred("monitoring", true)
 	_can_hit = true
 	
-func _on_collision(body_rid, body, body_shape_index, local_shape_index):
+func _on_collision(body_rid, body, _body_shape_index, _local_shape_index):
 	if body is not TileMapLayer or not _can_hit:
 		return
 	_can_hit = false
